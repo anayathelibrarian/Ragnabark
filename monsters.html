@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monsters: Ragnabark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #15110d;
+    --bg-vignette: radial-gradient(ellipse at 50% -10%, #241c14 0%, #15110d 55%);
+    --paper: #ece3c8;
+    --paper-dim: #d9cfae;
+    --ink: #2b2318;
+    --ink-soft: #59503e;
+    --brass: #b9903f;
+    --brass-bright: #d7ac57;
+    --wine: #8a3a3a;
+    --wine-bright: #c96a6a;
+    --hair: rgba(185,144,63,0.25);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; font-size:18px;}
+  body{
+    margin:0;
+    background:var(--bg-vignette), var(--bg);
+    color:var(--paper);
+    font-family:'EB Garamond', serif;
+    font-size:20px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    color:var(--brass-bright);
+    letter-spacing:0.01em;
+  }
+  a{color:var(--brass-bright);}
+
+  /* ---- Header / hero ---- */
+  header.hero{
+    padding:64px 24px 40px;
+    text-align:center;
+    border-bottom:1px solid var(--hair);
+  }
+  header.hero h1{
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    margin:0 0 6px;
+    font-style:italic;
+    font-weight:500;
+  }
+  header.hero .subtitle{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--paper-dim);
+    opacity:0.75;
+    font-size:1.05rem;
+    margin:0;
+  }
+  .ornament{
+    width:120px; height:1px;
+    background:linear-gradient(90deg, transparent, var(--brass), transparent);
+    margin:22px auto;
+  }
+
+  /* ---- Roster selector: a guest ledger ---- */
+  .ledger{
+    max-width:620px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .prep-print-row{
+    max-width:620px;
+    margin:20px auto 0;
+    padding:0 24px;
+    text-align:center;
+  }
+  .prep-print-row .print-hint-explainer{
+    margin:8px auto 0;
+    max-width:480px;
+  }
+  @media (min-width:641px){
+    .prep-print-row{
+      margin-left:320px;
+      margin-right:24px;
+      max-width:none;
+      text-align:right;
+    }
+    .prep-print-row .print-hint-explainer{
+      margin-left:auto;
+      margin-right:0;
+      text-align:right;
+    }
+  }
+  .ledger-label{
+    text-align:center;
+    font-size:0.92rem;
+    color:var(--paper-dim);
+    opacity:0.7;
+    margin-bottom:14px;
+    font-style:italic;
+  }
+  .ledger-tabs{
+    display:flex;
+    justify-content:center;
+    gap:0;
+    border:1px solid var(--hair);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .ledger-tab{
+    flex:1;
+    background:transparent;
+    border:none;
+    border-right:1px solid var(--hair);
+    color:var(--paper-dim);
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.3rem;
+    padding:14px 8px;
+    cursor:pointer;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .ledger-tab:last-child{border-right:none;}
+  .ledger-tab .n{display:block; font-size:1.9rem; font-weight:600;}
+  .ledger-tab .lbl{display:block; font-size:0.65rem; text-transform:lowercase; letter-spacing:0.06em; opacity:0.7;}
+  .ledger-tab:hover{background:rgba(185,144,63,0.08);}
+  .ledger-tab.active{
+    background:radial-gradient(ellipse at 50% -20%, rgba(215,172,87,0.35), rgba(185,144,63,0.12));
+    color:var(--brass-bright);
+  }
+  .ledger-tab.active .n{color:var(--brass-bright);}
+
+  /* ---- Main column ---- */
+  main{
+    max-width:700px;
+    margin:0 auto;
+    padding:40px 24px 100px;
+  }
+  section{margin-bottom:52px;}
+  h2{
+    font-size:1.9rem;
+    font-style:italic;
+    margin:0 0 18px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--hair);
+  }
+  h3{
+    font-size:1.35rem;
+    color:var(--paper);
+    margin:26px 0 6px;
+  }
+  h3 .role{
+    font-style:italic;
+    color:var(--brass);
+    font-weight:400;
+    font-size:1.1rem;
+  }
+  h4{
+    font-size:1.05rem;
+    font-style:italic;
+    color:var(--brass);
+    margin:16px 0 4px;
+  }
+  p{margin:0 0 14px;}
+  ul{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+
+  .callout{
+    background:rgba(236,227,200,0.05);
+    border-left:3px solid var(--brass);
+    border-radius:2px;
+    padding:16px 20px;
+    margin:18px 0;
+  }
+  .callout .callout-title{
+    font-family:'Cormorant Garamond', serif;
+    color:var(--brass-bright);
+    font-size:1.1rem;
+    font-style:italic;
+    margin-bottom:8px;
+  }
+  .callout p{margin-bottom:8px; font-size:0.98rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  /* character card */
+  .charcard{
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:16px 20px;
+    margin:16px 0;
+    background:rgba(236,227,200,0.03);
+  }
+  .charcard.dimmed{opacity:0.55;}
+  .redirect{
+    font-style:italic;
+    color:var(--paper);
+    opacity:0.95;
+  }
+.aspect{
+    font-style:italic;
+    color:var(--brass);
+    font-weight:400;
+    font-size:1.1rem;
+  }
+  ul.aspects{
+    list-style:none;
+    margin:6px 0 10px;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .player-name-row{
+    margin:2px 0 6px;
+  }
+  .player-name-row label{
+    font-size:0.85rem;
+    font-style:italic;
+    color:var(--brass);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .player-name-row input[type="text"]{
+    background:rgba(236,227,200,0.06);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    color:var(--paper);
+    font-family:'EB Garamond', serif;
+    font-style:normal;
+    font-size:0.92rem;
+    padding:3px 8px;
+    width:150px;
+  }
+  .player-name-row input[type="text"]:focus{
+    outline:none;
+    border-color:var(--brass);
+  }
+  .player-tag{
+    font-style:italic;
+    color:var(--brass);
+    font-size:0.75em;
+  }
+  .print-hint-explainer{
+    font-size:0.85rem;
+    color:var(--paper-dim);
+    opacity:0.8;
+    margin-top:6px;
+    max-width:480px;
+  }
+  #print-hand-hints{display:none;}
+  @media print{
+    body > *:not(#print-hand-hints){display:none !important;}
+    .floating-clock, .quickjump{display:none !important;}
+    #print-hand-hints{
+      display:block !important;
+      background:#fff;
+      color:#000;
+    }
+    #print-hand-hints .print-card{
+      border:2px dashed #999;
+      border-radius:6px;
+      padding:20px;
+      margin:0 0 24px;
+      page-break-inside:avoid;
+      font-family:'EB Garamond', Georgia, serif;
+    }
+    #print-hand-hints .print-card-text{
+      font-size:1.15rem;
+      line-height:1.6;
+      white-space:pre-wrap;
+    }
+    #print-hand-hints .print-card-caption{
+      margin-top:10px;
+      padding-top:8px;
+      border-top:1px solid #ccc;
+      font-size:0.8rem;
+      color:#666;
+      font-style:italic;
+    }
+  }
+  ul.aspects li.aspect{
+    border:1px solid var(--hair);
+    border-radius:20px;
+    padding:3px 12px;
+    font-size:0.88rem;
+    background:rgba(185,144,63,0.06);
+  }
+  ul.aspects li.aspect.trouble{
+    border-color:var(--wine-bright);
+    color:var(--wine-bright);
+    background:rgba(138,58,58,0.1);
+  }
+  .link-mark{
+    font-weight:600;
+  }
+  .link-mark::after{
+    content:attr(data-symbol);
+    font-size:0.75em;
+    margin-left:2px;
+    vertical-align:super;
+  }
+  .link-1{color:var(--brass-bright);}
+  .link-2{color:#6fa8dc;}
+  .link-3{color:#8fbc6f;}
+  .link-legend{
+    font-size:0.8rem;
+    font-style:italic;
+    color:var(--paper-dim);
+    opacity:0.8;
+    margin:4px 0 10px;
+  }
+  .card-head{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    margin-bottom:4px;
+  }
+  img.portrait{
+    width:76px;
+    height:76px;
+    object-fit:cover;
+    object-position:50% 12%;
+    border-radius:50%;
+    border:1px solid var(--brass);
+    flex-shrink:0;
+    background:rgba(236,227,200,0.05);
+  }
+  main section > img{
+    display:block;
+    max-width:100%;
+    height:auto;
+    border-radius:4px;
+    border:1px solid var(--hair);
+    margin:10px 0 16px;
+  }
+  .image-credit{
+    font-size:0.82rem;
+    font-style:italic;
+    color:var(--paper-dim);
+    opacity:0.85;
+    margin-top:-10px;
+  }
+  .image-credit a{
+    color:var(--brass);
+    text-decoration:underline;
+  }
+  .image-credit a:hover{color:var(--brass-bright);}
+  .style-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:20px;
+    margin:16px 0 20px;
+  }
+  .style-label{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color:var(--brass-bright);
+    font-size:1.1rem;
+    margin-bottom:8px;
+  }
+  .style-images{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .style-images img{
+    width:100%;
+    max-width:220px;
+    height:140px;
+    object-fit:cover;
+    border-radius:4px;
+    border:1px solid var(--hair);
+    margin:0;
+  }
+  .charcard h4{
+    font-family:'Cormorant Garamond', serif;
+    color:var(--brass);
+    font-style:italic;
+    font-weight:600;
+    font-size:1.02rem;
+    margin:16px 0 4px;
+    text-transform:none;
+  }
+  .charcard table{
+    width:100%;
+    border-collapse:collapse;
+    margin:6px 0 10px;
+    font-size:0.92rem;
+  }
+  .charcard table th, .charcard table td{
+    border:1px solid var(--hair);
+    padding:5px 9px;
+    text-align:left;
+    font-weight:400;
+  }
+  .charcard table th{
+    background:var(--paper-dim);
+    color:#6b4a1f;
+    font-style:italic;
+    font-weight:600;
+    white-space:nowrap;
+    width:1%;
+  }
+  .charcard table td:not(:empty){
+    background:var(--paper);
+    color:var(--ink);
+    font-weight:500;
+  }
+  .stress-line{
+    font-size:0.95rem;
+    color:var(--paper-dim);
+    opacity:0.95;
+    margin:2px 0 12px;
+  }
+  .part-divider{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin:64px 0 40px;
+  }
+  .part-divider::before, .part-divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--brass), transparent);
+  }
+  .part-divider .part-label{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.4rem;
+    color:var(--brass-bright);
+    white-space:nowrap;
+    text-align:center;
+  }
+  .part-divider .part-label small{
+    display:block;
+    font-size:0.75rem;
+    font-style:normal;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+    opacity:0.7;
+    margin-top:2px;
+  }
+  .part-toggle{
+    background:transparent;
+    border:1px solid var(--hair);
+    border-radius:16px;
+    color:var(--paper-dim);
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.82rem;
+    padding:4px 14px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .part-toggle:hover{border-color:var(--brass); color:var(--brass-bright);}
+  #part-one-content.collapsed{display:none;}
+  #cast-content.collapsed{display:none;}
+  #intro-cw-content.collapsed{display:none;}
+
+  .quickjump{
+    position:fixed;
+    bottom:18px;
+    right:18px;
+    z-index:900;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:6px;
+  }
+  .quickjump-toggle{
+    background:var(--bg);
+    border:1px solid var(--brass);
+    border-radius:20px;
+    color:var(--brass-bright);
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.9rem;
+    padding:8px 18px;
+    cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,0.5);
+  }
+  .quickjump-links{
+    display:none;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:4px;
+    background:var(--bg);
+    border:1px solid var(--hair);
+    border-radius:8px;
+    padding:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.55);
+    max-height:60vh;
+    overflow-y:auto;
+  }
+  .quickjump-links.open{display:flex;}
+  .quickjump-links a{
+    color:var(--paper-dim);
+    font-size:0.92rem;
+    text-decoration:none;
+    padding:4px 10px;
+    border-radius:4px;
+    white-space:nowrap;
+  }
+  .quickjump-links a:hover{background:rgba(185,144,63,0.14); color:var(--brass-bright);}
+
+  /* roster-conditional visibility */
+  [data-roster]{transition:opacity 0.2s ease;}
+  [data-roster].hide{display:none;}
+
+  /* collapsible sections */
+  details{margin-top:8px;}
+  details > summary{
+    cursor:pointer;
+    color:var(--brass);
+    font-style:italic;
+    font-size:0.92rem;
+    padding:6px 0;
+    list-style:none;
+  }
+  details > summary::-webkit-details-marker{display:none;}
+  details > summary::before{
+    content:"▸ ";
+    display:inline-block;
+    transition:transform 0.15s ease;
+  }
+  details[open] > summary::before{
+    transform:rotate(90deg);
+  }
+
+  @media (max-width:520px){
+    body{font-size:16.5px;}
+    .ledger-tab .n{font-size:1.5rem;}
+    header.hero{padding:48px 16px 32px;}
+  }
+  /* ---- Monster tabs ---- */
+  .monster-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:18px;
+  }
+  .monster-tab-btn{
+    background:transparent;
+    border:1px solid var(--hair);
+    border-radius:20px;
+    color:var(--paper-dim);
+    font-family:'EB Garamond', serif;
+    font-size:0.9rem;
+    padding:6px 16px;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .monster-tab-btn:hover{background:rgba(185,144,63,0.08);}
+  .monster-tab-btn.active{
+    background:rgba(185,144,63,0.18);
+    border-color:var(--brass);
+    color:var(--brass-bright);
+  }
+  .monster-panel{display:none;}
+  .monster-panel.active{display:block;}
+  .stress-track{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:6px 0 14px;
+  }
+  .stress-group{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.9rem;
+  }
+  .stress-group label{
+    display:flex;
+    align-items:center;
+    gap:3px;
+    cursor:pointer;
+  }
+  .stress-group input[type="checkbox"]{
+    width:16px; height:16px;
+    accent-color:var(--brass);
+    cursor:pointer;
+  }
+  .consequence-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:6px;
+    font-size:0.92rem;
+  }
+  .consequence-row span{
+    width:110px;
+    flex-shrink:0;
+    color:var(--brass);
+    font-style:italic;
+  }
+  .consequence-row input[type="text"]{
+    flex:1;
+    background:rgba(236,227,200,0.06);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:6px 10px;
+    color:var(--paper);
+    font-family:'EB Garamond', serif;
+    font-size:0.95rem;
+  }
+  .consequence-row input[type="text"]:focus{
+    outline:none;
+    border-color:var(--brass);
+  }
+  .stat-immune{
+    font-style:italic;
+    color:var(--paper-dim);
+    opacity:0.95;
+    font-size:0.95rem;
+  }
+
+  /* ---- Hints browser ---- */
+  .hints-filters{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .hints-filters select, .hints-filters input[type="text"]{
+    background:rgba(236,227,200,0.06);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:8px 12px;
+    color:var(--paper);
+    font-family:'EB Garamond', serif;
+    font-size:0.95rem;
+  }
+  .hints-filters select{min-width:220px;}
+  .hints-filters input[type="text"]{flex:1; min-width:200px;}
+  .hints-filters select:focus, .hints-filters input[type="text"]:focus{
+    outline:none;
+    border-color:var(--brass);
+  }
+  .hints-filter-group{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:4px 14px;
+    margin-bottom:10px;
+    font-size:0.9rem;
+  }
+  .hints-filter-group .hints-filter-label{
+    color:var(--brass);
+    font-style:italic;
+    width:100%;
+    font-size:0.85rem;
+    margin-bottom:2px;
+  }
+  .hints-filter-group label{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    cursor:pointer;
+    color:var(--paper-dim);
+  }
+  .hints-filter-group input[type="checkbox"]{
+    accent-color:var(--brass);
+    cursor:pointer;
+  }
+  .hints-count{
+    font-size:0.88rem;
+    color:var(--paper-dim);
+    opacity:0.7;
+    font-style:italic;
+    margin-bottom:14px;
+  }
+  .hint-card{
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:14px 18px;
+    margin-bottom:10px;
+    background:rgba(236,227,200,0.03);
+  }
+  .hint-card .hint-trigger{
+    color:var(--brass-bright);
+    font-style:italic;
+    font-size:0.95rem;
+    margin-bottom:4px;
+  }
+  .hint-card .hint-meta{
+    font-size:0.88rem;
+    color:var(--paper-dim);
+    opacity:0.92;
+    margin-bottom:6px;
+  }
+  .hint-card .hint-meta span{margin-right:14px;}
+  .hint-card .hint-text{font-size:1.05rem;}
+  .hint-card .player-view-btn{
+    display:inline-block;
+    margin-top:8px;
+    padding:5px 14px;
+    border:1px solid var(--brass);
+    border-radius:20px;
+    background:rgba(185,144,63,0.1);
+    color:var(--brass-bright);
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.85rem;
+    cursor:pointer;
+  }
+  .hint-card .player-view-btn:hover{background:rgba(185,144,63,0.22);}
+  .progress-tag{
+    display:inline-block;
+    font-size:0.78rem;
+    font-style:italic;
+    color:var(--wine-bright);
+    background:rgba(138,58,58,0.12);
+    border:1px solid var(--wine-bright);
+    border-radius:12px;
+    padding:2px 10px;
+    margin-bottom:8px;
+  }
+  .progress-mark-btn{
+    display:inline-block;
+    margin-top:8px;
+    margin-left:8px;
+    padding:5px 14px;
+    border:1px solid var(--wine-bright);
+    border-radius:20px;
+    background:rgba(138,58,58,0.08);
+    color:var(--wine-bright);
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.85rem;
+    cursor:pointer;
+  }
+  .progress-mark-btn:hover{background:rgba(138,58,58,0.2);}
+  .hint-card-notable{
+    border-color:var(--brass);
+    background:rgba(185,144,63,0.05);
+  }
+  .notable-tag{
+    display:block;
+    font-size:0.82rem;
+    font-weight:600;
+    color:var(--bg);
+    background:var(--brass-bright);
+    border-radius:3px;
+    padding:4px 10px;
+    margin-bottom:8px;
+  }
+
+  .player-view-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(8,6,4,0.92);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .player-view-overlay.open{display:flex;}
+  .player-view-box{
+    background:var(--paper);
+    color:var(--ink);
+    max-width:640px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+    border-radius:6px;
+    padding:44px 40px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .player-view-content{
+    font-family:'EB Garamond', serif;
+    font-size:1.3rem;
+    line-height:1.7;
+    white-space:pre-wrap;
+  }
+  .player-view-content img.player-view-img{
+    display:block;
+    max-width:100%;
+    height:auto;
+    border-radius:4px;
+    margin:0 auto 16px;
+  }
+  .player-view-content img.player-view-img:last-child{margin-bottom:0;}
+  .player-view-close{
+    position:absolute;
+    top:10px;
+    right:16px;
+    background:none;
+    border:none;
+    font-size:2rem;
+    line-height:1;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .player-view-close:hover{color:var(--ink);}
+
+  .summary-box{
+    background:var(--bg);
+    border:1px solid var(--brass);
+    color:var(--paper-dim);
+    max-width:600px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+    border-radius:6px;
+    padding:32px 34px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  }
+  .summary-box h3{
+    font-family:'Cormorant Garamond', serif;
+    color:var(--brass-bright);
+    font-size:1.5rem;
+    font-style:italic;
+    margin:0 0 6px;
+  }
+  .summary-hint{
+    font-size:0.9rem;
+    opacity:0.75;
+    margin-bottom:14px;
+  }
+  .summary-textarea{
+    width:100%;
+    min-height:320px;
+    background:rgba(236,227,200,0.05);
+    border:1px solid var(--hair);
+    border-radius:4px;
+    color:var(--paper);
+    font-family:'EB Garamond', serif;
+    font-size:0.92rem;
+    line-height:1.5;
+    padding:14px;
+    white-space:pre-wrap;
+    resize:vertical;
+  }
+  .summary-actions{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+    flex-wrap:wrap;
+  }
+  .summary-close{color:var(--paper-dim);}
+  .summary-close:hover{color:var(--brass-bright);}
+  /* ---- Session notes ---- */
+  .notes-field{margin-bottom:18px;}
+  .notes-field label{
+    display:block;
+    color:var(--brass);
+    font-style:italic;
+    font-size:0.92rem;
+    margin-bottom:6px;
+  }
+  .notes-field input[type="text"], .notes-field select, .notes-field textarea{
+    width:100%;
+    background:rgba(236,227,200,0.06);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:9px 12px;
+    color:var(--paper);
+    font-family:'EB Garamond', serif;
+    font-size:0.98rem;
+  }
+  .notes-field input[type="text"]:focus, .notes-field select:focus, .notes-field textarea:focus{
+    outline:none;
+    border-color:var(--brass);
+  }
+  .notes-field textarea{min-height:120px; resize:vertical; line-height:1.5;}
+  .room-checklist{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(190px, 1fr));
+    gap:6px 14px;
+  }
+  .room-checklist .floor-label{
+    grid-column:1/-1;
+    color:var(--brass);
+    font-style:italic;
+    font-size:0.85rem;
+    margin-top:8px;
+  }
+  .room-checklist label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.9rem;
+    cursor:pointer;
+  }
+  .room-checklist input[type="checkbox"]{
+    accent-color:var(--brass);
+    cursor:pointer;
+  }
+  .notes-saved-indicator{
+    font-size:0.82rem;
+    color:var(--paper-dim);
+    opacity:0.6;
+    font-style:italic;
+  }
+  .clock-display{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.4rem;
+    font-weight:600;
+    color:var(--brass-bright);
+    margin:4px 0 12px;
+  }
+  .clock-buttons{display:flex; gap:10px; flex-wrap:wrap;}
+  .clock-btn{
+    background:rgba(185,144,63,0.1);
+    border:1px solid var(--brass);
+    border-radius:20px;
+    color:var(--brass-bright);
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.92rem;
+    padding:7px 18px;
+    cursor:pointer;
+  }
+  .clock-btn:hover{background:rgba(185,144,63,0.22);}
+  .clock-btn-reset{
+    border-color:var(--hair);
+    color:var(--paper-dim);
+    background:transparent;
+  }
+  .wl-mini-divider{
+    height:1px;
+    background:var(--hair);
+    margin:12px 0 10px;
+  }
+  .wl-mini-label{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.78rem;
+    color:var(--brass);
+    margin-bottom:6px;
+    text-align:left;
+  }
+  .floating-clock select#wl-path-select{
+    width:100%;
+    background:rgba(236,227,200,0.06);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    color:var(--paper);
+    font-family:'EB Garamond', serif;
+    font-size:0.88rem;
+    padding:5px 8px;
+    margin-bottom:8px;
+    cursor:pointer;
+  }
+  .floating-clock .wl-talking-toggle{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.82rem;
+    text-align:left;
+    margin:0 0 10px;
+    cursor:pointer;
+  }
+  .floating-clock .wl-talking-toggle input[type="checkbox"]{
+    width:15px; height:15px;
+    accent-color:var(--brass);
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .floating-clock .wl-status-panel{
+    max-width:none;
+    padding:10px 12px;
+    font-size:0.85rem;
+    text-align:left;
+  }
+  .floating-clock .wl-status-panel .wl-room{font-size:1.05rem; margin-bottom:4px;}
+  .floating-clock{
+    position:fixed;
+    top:18px;
+    left:18px;
+    z-index:900;
+    background:var(--bg);
+    border:1px solid var(--brass);
+    border-radius:8px;
+    padding:12px 18px 14px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.5);
+    text-align:center;
+    min-width:150px;
+  }
+  .floating-clock-label{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.78rem;
+    color:var(--brass);
+    margin-bottom:2px;
+  }
+  .floating-clock .clock-display{
+    font-size:1.6rem;
+    margin:2px 0 8px;
+  }
+  .floating-clock .clock-buttons{
+    justify-content:center;
+    margin-bottom:6px;
+  }
+  .floating-clock .clock-btn{
+    padding:4px 12px;
+    font-size:0.82rem;
+  }
+  .clock-reset-link{
+    background:none;
+    border:none;
+    color:var(--paper-dim);
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.76rem;
+    text-decoration:underline;
+    cursor:pointer;
+    opacity:0.7;
+    padding:0;
+  }
+  .clock-reset-link:hover{opacity:1; color:var(--brass-bright);}
+  @media (max-width:640px){
+    .floating-clock{
+      top:auto;
+      bottom:18px;
+      left:18px;
+      padding:6px 14px;
+      min-width:auto;
+      cursor:pointer;
+    }
+    .floating-clock .clock-display{font-size:1.05rem; margin:0;}
+    .floating-clock-label, .floating-clock .clock-buttons, .floating-clock .clock-reset-link,
+    .floating-clock .wl-mini-divider, .floating-clock .wl-mini-label, .floating-clock select#wl-path-select,
+    .floating-clock .wl-talking-toggle, .floating-clock .wl-status-panel{
+      display:none;
+    }
+    .floating-clock.expanded{
+      padding:10px 14px 12px;
+      max-width:260px;
+    }
+    .floating-clock.expanded .clock-display{font-size:1.3rem; margin:0 0 8px;}
+    .floating-clock.expanded .clock-buttons{display:flex;}
+    .floating-clock.expanded .clock-reset-link{display:inline-block;}
+    .floating-clock.expanded .wl-mini-divider,
+    .floating-clock.expanded .wl-mini-label,
+    .floating-clock.expanded select#wl-path-select,
+    .floating-clock.expanded .wl-talking-toggle{display:block;}
+    .floating-clock.expanded .wl-status-panel{display:block;}
+  }
+  .current-room-panel{
+    margin-top:16px;
+    padding:16px 20px;
+    border:1px solid var(--brass);
+    border-radius:4px;
+    background:radial-gradient(ellipse at 50% 0%, rgba(185,144,63,0.08), transparent 70%);
+    max-width:480px;
+  }
+  .current-room-name{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.3rem;
+    font-style:italic;
+    color:var(--brass-bright);
+    margin-bottom:8px;
+  }
+  .current-room-row{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    padding:6px 0;
+    border-bottom:1px solid var(--hair);
+    font-size:0.92rem;
+  }
+  .current-room-row:last-child{border-bottom:none;}
+  .current-room-row .k{color:var(--brass); font-style:italic; white-space:nowrap;}
+  .current-room-row .v{text-align:right; color:var(--paper);}
+  .current-room-description{
+    margin:12px 0 0;
+    padding-top:12px;
+    border-top:1px solid var(--hair);
+    font-style:italic;
+    color:var(--paper-dim);
+    font-size:0.98rem;
+    line-height:1.6;
+  }
+  .current-room-description .notable-tag{
+    font-style:normal;
+    margin-bottom:8px;
+  }
+  .wl-talking-toggle{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    font-size:0.95rem;
+    margin:14px 0;
+  }
+  .wl-talking-toggle input[type="checkbox"]{
+    accent-color:var(--brass);
+    cursor:pointer;
+    width:18px; height:18px;
+  }
+  .wl-status-panel{
+    border:1px solid var(--brass);
+    border-radius:4px;
+    padding:16px 20px;
+    background:radial-gradient(ellipse at 50% 0%, rgba(185,144,63,0.08), transparent 70%);
+    max-width:520px;
+    font-size:0.98rem;
+  }
+  .wl-status-panel .wl-room{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.3rem;
+    font-style:italic;
+    color:var(--brass-bright);
+    margin-bottom:6px;
+  }
+  .wl-status-panel.wl-alert{
+    border-color:var(--wine-bright);
+    background:radial-gradient(ellipse at 50% 0%, rgba(138,58,58,0.16), transparent 70%);
+  }
+  .wl-status-panel.wl-alert .wl-room{color:var(--wine-bright);}
+  .progress-flags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 24px;
+    margin-bottom:16px;
+  }
+  .progress-flags label{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    cursor:pointer;
+    font-size:0.98rem;
+  }
+  .progress-flags input[type="checkbox"]{
+    accent-color:var(--brass);
+    cursor:pointer;
+    width:18px; height:18px;
+  }
+  table.progress-table{
+    width:100%;
+    max-width:520px;
+    border-collapse:collapse;
+    font-size:0.92rem;
+  }
+  table.progress-table th, table.progress-table td{
+    border:1px solid var(--hair);
+    padding:7px 10px;
+    text-align:center;
+  }
+  table.progress-table th{
+    color:var(--brass);
+    font-style:italic;
+    font-weight:400;
+  }
+  table.progress-table td:first-child{
+    text-align:left;
+    color:var(--paper);
+  }
+  table.progress-table input[type="checkbox"]{
+    accent-color:var(--brass);
+    cursor:pointer;
+    width:16px; height:16px;
+  }
+</style>
+</head>
+<body>
+
+<style>
+  .page-nav{display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:0 0 32px; padding:14px 0; border-bottom:1px solid var(--hair);}
+  .page-nav a{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.05rem;
+    color:var(--paper-dim); text-decoration:none; padding:6px 16px; border:1px solid var(--hair); border-radius:20px;
+    transition:all 0.15s ease;
+  }
+  .page-nav a:hover{color:var(--brass-bright); border-color:var(--brass);}
+  .page-nav a.current{color:var(--brass-bright); border-color:var(--brass-bright); background:rgba(185,144,63,0.08);}
+  .todo-note{border:1px dashed var(--brass); border-radius:8px; padding:14px 18px; margin:20px 0; background:rgba(185,144,63,0.05); font-style:italic; color:var(--paper-dim);}
+</style>
+<header class="hero">
+  <h1>Ragnabark</h1>
+</header>
+
+<nav class="page-nav">
+  <a href="index.html">Intro</a>
+  <a href="lore.html">Lore</a>
+  <a href="roster.html">Roster</a>
+  <a href="monsters.html" class="current">Monsters</a>
+  <a href="tracker.html">Play Tracker</a>
+</nav>
+  <div class="ledger">
+    <p class="ledger-label">How many are playing tonight?</p>
+    <div class="ledger-tabs" role="tablist" aria-label="Choose player count">
+      <button class="ledger-tab" data-set="4"><span class="n">4</span><span class="lbl">players</span></button>
+      <button class="ledger-tab" data-set="5"><span class="n">5</span><span class="lbl">players</span></button>
+      <button class="ledger-tab active" data-set="6"><span class="n">6</span><span class="lbl">players</span></button>
+      <button class="ledger-tab" data-set="7"><span class="n">7</span><span class="lbl">players</span></button>
+    </div>
+  </div>
+
+<main>
+<section id="section-monsters">
+    <h2>Monsters and Ghosts</h2>
+    <p>Full Fate stat blocks for everyone else in the house. Stress boxes and consequence slots below are live &mdash; check them off and type in consequences during play; nothing is saved after you close the page.</p>
+    <div class="monster-tabs" role="tablist">
+      <button class="monster-tab-btn" data-monster="brandon" data-roster="4">Brandon (NPC)</button>
+      <button class="monster-tab-btn" data-monster="ashley" data-roster="4,5,6">Ashley (NPC)</button>
+      <button class="monster-tab-btn active" data-monster="francis2">Francis II</button>
+      <button class="monster-tab-btn" data-monster="nathaniel">Nathaniel</button>
+      <button class="monster-tab-btn" data-monster="whitelady">White Lady</button>
+      <button class="monster-tab-btn" data-monster="skelly1">Skelly I</button>
+      <button class="monster-tab-btn" data-monster="skelly2">Skelly II</button>
+      <button class="monster-tab-btn" data-monster="golem">Grave Golem</button>
+      <button class="monster-tab-btn" data-monster="mist">Mist</button>
+    </div>
+
+    <div class="monster-panel" id="panel-ashley">
+      <div class="charcard">
+        <div class="card-head">
+          <img class="portrait" src="Media/ashley.png" alt="" onerror="this.style.display='none'">
+          <div>
+            <h3>Ashley West</h3>
+            <ul class="aspects">
+              <li class="aspect trouble">Plagued by Visions &amp; Voices</li>
+              <li class="aspect">Frustrating Little Sister</li>
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/ashley.png', 'Ashley')">Show Photo</button>
+        <p><em>Physical Description:</em> A field vest with a dozen pockets, worn sneakers, a smear of dirt on one knee.</p>
+        <p><em>Items She Has:</em> A well-thumbed field guide to local birds and mammals, her name written inside the cover in careful handwriting: Ashley West.</p>
+        <p><em>What She Knows:</em> Plagued by visions and voices even before tonight. She's home when the ritual goes wrong, is frightened by it, hides for about an hour, and then goes looking for Tiffany. Unlike the PCs, Ashley isn't affected by the amnesia &mdash; and she can see and speak with Temperance (a West-family ghost) clearly before the party ever finds her. She's a good tool for feeding the party information they can't get any other way, but she isn't a fully fleshed-out NPC beyond that &mdash; improvise her freely.</p>
+        <h4>Skills</h4>
+        <table>
+          <tr><th scope="row">Great (+4)</th><td>Lore</td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td>Investigate</td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Stealth</td><td>Athletics</td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Crafts</td><td>Empathy</td><td>Provoke</td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p><strong>Animal Affinity:</strong> player picks one animal type (cats, rodents, horses, etc), fixed for the whole game. At the start of any scene where that animal could reasonably appear, make a Lore check at Good (+3); on a success, one is present.</p>
+        <p><strong>Berserk Rage:</strong> when she suffers a physical consequence, she can invoke it for free on her next attack. Multiple consequences = multiple free invokes.</p>
+        <h4>Physical Stress</h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label></div>
+        </div>
+        <h4>Mental Stress</h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label></div>
+        </div>
+        <h4>Consequences</h4>
+        <div class="consequence-row"><span>Mild (2)</span><input type="text"></div>
+        <div class="consequence-row"><span>Moderate (4)</span><input type="text"></div>
+        <div class="consequence-row"><span>Severe (6)</span><input type="text"></div>
+        <div class="callout">
+          <div class="callout-title">Running Ashley's entrance</div>
+          <p>She isn't in the ballroom for the ritual, so she isn't caught in the initial blast and doesn't start the night with the party. In practice, this means her actual arrival is on your clock, not the players' &mdash; in one run of this, she didn't show up until session 2.</p>
+          <p>Pick a hiding room for her ahead of time: somewhere outside the ballroom, close enough to the action that finding her later makes sense, but not so close she'd have been swept up in the ritual herself.</p>
+          <p>If the player who'd be running Ashley is sitting at the table from the start, tell them plainly they'll need to be patient for a few minutes, and position Ashley closer to the ballroom so it isn't long before she's found. You don't want that player to get bored, but you do want to drum up some suspense &mdash; use your best judgement. There are ways to feed Ashley's player information through a side chat channel that will make them feel important later, to balance out a later start. Time her entrance for when the players have figured out they're in danger, and keep her a little jumpy. The player characters should sense someone else is in the house with them before they learn it's Tiffany's little sister.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="monster-panel" id="panel-brandon">
+      <div class="charcard">
+        <div class="card-head">
+          <img class="portrait" src="Media/brandon.jpg" alt="" onerror="this.style.display='none'">
+          <div>
+            <h3>Brandon Ross</h3>
+            <ul class="aspects">
+              <li class="aspect">Mr. Popular</li>
+              <li class="aspect trouble">Casual Blackmailer</li>
+              <li class="aspect">Short Fuse</li>
+              <li class="aspect">"We found him like that, officer"</li>
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/brandon.jpg', 'Brandon')">Show Photo</button>
+        <div class="callout">
+          <div class="callout-title">Notes</div>
+          <p>In the 4-player game, Brandon is an NPC rather than a played character &mdash; he dies in the same ritual that leaves everyone else with temporary amnesia (see the Ballroom hint where the party finds his body). While he's alive, though, he's still working his usual angle: charming, manipulative, quick to sniff out an opening on everyone around him.</p>
+          <p><strong>Corey</strong> &mdash; holds the hit-and-run over him. Since Kelly isn't used in this roster, her secret transferred to Corey: he was driving, hit a pedestrian, and hid the body. Brandon knows, and uses it to get Corey to do his homework, cover for him, whatever he needs.</p>
+          <p><strong>Joel</strong> &mdash; knows about the underground boxing ring Joel joined to pay off gambling debts. Same leverage as in the other rosters where Joel exists as a PC.</p>
+          <p><strong>Jennifer</strong> &mdash; knows she's secretly dating two people at once. In this roster, that's Joel and Corey, neither aware of the other. Brandon isn't one of the two partners himself &mdash; he just knows, and holds it over her.</p>
+          <p><strong>If the party searches his body:</strong> a small notebook in his jacket pocket, written in his own shorthand rather than plainly &mdash; "C.T. &mdash; the dent thing, keep quiet, $ if needed." "J.L. &mdash; Friday nights, the ring, still owes." "J&mdash; &mdash; two @ once, neither knows. leverage." Don't hand players the decode outright; let them work out from context that C.T. is Corey Taylor (the hit-and-run), J.L. is Joel Lopez (his boxing-ring debt), and J&mdash; is Jennifer (dating two people, neither aware of the other).</p>
+          <p><em>Brandon is a played character in every other roster &mdash; see the Roster page.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="monster-panel active" id="panel-francis2">
+      <div class="charcard">
+        <div class="card-head">
+          <img class="portrait" src="Media/franciswest2.jpg" alt="" onerror="this.style.display='none'">
+          <div>
+            <h3>Francis II</h3>
+            <ul class="aspects">
+              <li class="aspect trouble">Killed his father</li>
+              <li class="aspect">Impulsive; haunted by his own choice</li>
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/franciswest2.jpg', 'Francis II')">Show Photo</button>
+        <p><em>High Concept:</em> Dutiful Heir</p>
+        <h4>Skills</h4>
+        <table>
+          <tr><th scope="row">Great (+4)</th><td>Stealth</td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td>Provoke</td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Lore</td><td>Will</td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Empathy</td><td>Deceive</td><td>Crafts</td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p>Ghostly: cannot physically attack, cannot physically be attacked.</p>
+        <h4>Physical Stress</h4>
+        <p class="stat-immune">Immune to physical attacks</p>
+        <h4>Mental Stress</h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label></div>
+        </div>
+        <h4>Consequences</h4>
+        <div class="consequence-row"><span>Mild (2)</span><input type="text"></div>
+        <div class="consequence-row"><span>Moderate (4)</span><input type="text"></div>
+        <div class="consequence-row"><span>Severe (6)</span><input type="text"></div>
+        <div class="callout">
+          <div class="callout-title">Notes</div>
+          <p>Francis II discovered his father's pattern of killing people under his power and, recognizing that Elizabeth's tragedy was part of the same sin, killed him for it &mdash; then spent the rest of his afterlife haunted by his actions, conflicted that the right answer somehow involved patricide.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-title">What's Learned About Him From Hints</div>
+          <p><strong>His confession (Yellow Room, 1636):</strong> a letter in his own hand, admitting he drowned his father in the estate's pond. He calls it unbearable to confess, but explains he'd learned of his father's cruelty toward Elizabeth from the old man's own journal and couldn't let it stand &mdash; while also deciding not to tell Elizabeth herself, since she'd found some happiness and he didn't want to shatter it. To the world, Francis West Sr. remains a colonial hero; he intends to keep it that way.</p>
+          <p><strong>His research, in his own journal fragments, scattered through the house:</strong> after Elizabeth's tragedy but before he killed his father (1633&ndash;1635), he went looking for the rest of his father's victims. He found three: Patience, a groundskeeper's daughter, paid off the books until the payments simply stopped (Library, 1633); Elias, a debtor his father claimed to have sent west to work off a debt, who was never heard from again (Southeast Servant's Quarters, 1634); and Caleb, a ward of the estate with no family to ask after him, the angriest and most personal of the three entries (Southwest Servant's Quarters, 1635). Each entry keeps an object &mdash; Patience's carved bird, Elias's pocket-watch chain, Caleb's tin soldier &mdash; that he later gathered into a shrine at his father's tomb (Mausoleum), disguised as a grieving son's devotion but meant as an indictment.</p>
+          <p><strong>At the Grounds, near the pond,</strong> Francis II's ghost can actually be found and interacted with directly &mdash; he can be helpful to the party if approached there.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="monster-panel" id="panel-nathaniel">
+      <div class="charcard">
+        <div class="card-head">
+          <img class="portrait" src="Media/nathanielwest.png" alt="" onerror="this.style.display='none'">
+          <div>
+            <h3>Nathaniel</h3>
+            <ul class="aspects">
+              <li class="aspect">Vampire Technophobe</li>
+              <li class="aspect">I'm too old for this shit</li>
+            </ul>
+          </div>
+        </div>
+        <h4>Skills</h4>
+        <table>
+          <tr><th scope="row">Great (+4)</th><td>Lore</td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td>Fight</td><td>Athletics</td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Empathy</td><td>Will</td><td>Deceive</td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Shoot</td><td>Crafts</td><td>Stealth</td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p><strong>Spider Walk:</strong> treat any surface, any angle, as no harder than a vertical climb with good handholds.</p>
+        <p><strong>Inhuman Speed:</strong> +4 Investigate for initiative; +1 Athletics (+2 sprinting); move 1 zone free without the -1 supplemental penalty; Stealth difficulty from movement reduced by 2.</p>
+        <p><strong>Inhuman Toughness</strong> (Catch: Holy Water): Armor:1 vs physical stress; two extra physical stress boxes.</p>
+        <h4>Physical Stress <span class="stat-immune">(+1 armor; fangs are a weapon at +2)</span></h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label><label><input type="checkbox"> 4</label><label><input type="checkbox"> 5</label><label><input type="checkbox"> 6</label></div>
+        </div>
+        <h4>Mental Stress</h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label></div>
+        </div>
+        <h4>Consequences</h4>
+        <div class="consequence-row"><span>Mild (2)</span><input type="text"></div>
+        <div class="consequence-row"><span>Moderate (4)</span><input type="text"></div>
+        <div class="consequence-row"><span>Severe (6)</span><input type="text"></div>
+        <div class="callout">
+          <div class="callout-title">What He Knows</div>
+          <p>He has his own story about the ghosts of long-dead family who linger on the property. He hasn't spent his whole life here, though &mdash; after growing up on the estate, he spent a few hundred years out in the world, and only returned once things got too technologically advanced for him. He used to live in the house itself, but moved out to the stable-turned-garage once Tiffany's family showed up and displaced him.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="monster-panel" id="panel-whitelady">
+      <div class="charcard">
+        <div class="card-head">
+          <img class="portrait" src="Media/whiteladyearly.jpg" alt="" onerror="this.style.display='none'">
+          <div>
+            <h3>White Lady</h3>
+            <ul class="aspects">
+              <li class="aspect">Vengeful Ghost</li>
+              <li class="aspect trouble">Murdered her son</li>
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/elizabethwest.jpg', 'Elizabeth West')">Show Photo (family portrait)</button>
+        <h4>Skills</h4>
+        <table>
+          <tr><th scope="row">Great (+4)</th><td>Lore</td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td>Will</td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Empathy</td><td>Provoke</td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Fight</td><td>Athletics</td><td></td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p>Ghostly: cannot physically attack, cannot physically be attacked.</p>
+        <p><strong>Otherworldly Rage:</strong> once per hour, if she and the youngest PC present are in a room with water, she can manifest physically and try to drown them. While manifested she can take stress/damage. On her next turn, she flees.</p>
+        <p><strong>A Mother's Scream:</strong> once per scene, she can let out a scream that attacks every PC in the room at once, mentally, using a single Provoke roll against each of their Will defenses.</p>
+        <h4>Physical Stress <span class="stat-immune">(immune while non-corporeal; see Otherworldly Rage)</span></h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label></div>
+        </div>
+        <h4>Mental Stress</h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label><label><input type="checkbox"> 4</label></div>
+        </div>
+        <h4>Consequences</h4>
+        <div class="consequence-row"><span>Mild (2)</span><input type="text"></div>
+        <div class="consequence-row"><span>Moderate (4)</span><input type="text"></div>
+        <div class="consequence-row"><span>Severe (6)</span><input type="text"></div>
+        <div class="callout">
+          <div class="callout-title">Notes</div>
+          <p>Born 1615, died 1690.</p>
+          <p>Her appearance as a ghost can vary &mdash; pick whichever serves the scene: murky and indistinct, barely a shape in the dark; a close match to her family portrait, young and recognizable; or an old woman, closer to how she'd have actually looked when she died.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-title">What She'll Tell the Party</div>
+          <p>She is Elizabeth West.</p>
+          <p>Her full story: she fell in love with a local working man against her father's wishes and married him anyway. When he died in a mill accident, she came home widowed, her small son in tow, and her father told her coldly that no respectable man would take her with a laborer's child. In her grief, she drowned her infant son in the pond behind the manse. Her father then had her married off to Richard Cary within the month.</p>
+          <p>She's trapped here, unable to leave the grounds even in death &mdash; not unlike the mist that's currently keeping the party in the same place.</p>
+          <p>She wants revenge on her father.</p>
+          <p><strong>If asked how to leave, or to help her</strong> (any of these three appease her &mdash; End Games 1&ndash;3): she'll have no reason to stay if she can avenge herself on her father. His remains are in the mausoleum &mdash; retrieve and burn them, without ceremony, in the servant's kitchen downstairs. Expect physical resistance along the way. Revealing her brother's act (Francis II killing their father) can also appease her, as can promising to reveal the truth about Francis I &mdash; though convincing the wider world that a celebrated colonial hero was actually a murderer is no small task. This should cost the party real, sustained social effort (multiple rolls, pushback from people who don't want to believe it), not a single easy roll &mdash; the exact shape of that is up to you.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="monster-panel" id="panel-skelly1">
+      <div class="charcard">
+        <div class="card-head">
+          <img class="portrait" src="Media/skelly.png" alt="" onerror="this.style.display='none'">
+          <div>
+            <h3>Skelly I <span class="role">&mdash; Mob</span></h3>
+            <ul class="aspects">
+              <li class="aspect trouble">Doesn't remember</li>
+              <li class="aspect">Attacks the living for their insolence</li>
+            </ul>
+          </div>
+        </div>
+        <p><em>High Concept:</em> Risen West-Family Dead / Servant</p>
+        <h4>Skills (base, before mob bonus)</h4>
+        <table>
+          <tr><th></th><th></th><th>Mob A</th><th>Mob B</th></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Fight</td><td id="mob-skelly1-fight-a">+2</td><td id="mob-skelly1-fight-b">+2</td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Athletics</td><td id="mob-skelly1-athletics-a">+1</td><td id="mob-skelly1-athletics-b">+1</td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p>Grows stronger, faster, and quicker to summon as the night goes on.</p>
+
+        <h4>Mob A &mdash; Size</h4>
+        <div class="notes-field" style="max-width:140px;">
+          <select class="mob-size-input" data-mob="skelly1a" id="mob-size-skelly1a">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          </select>
+        </div>
+        <p class="stress-line" id="mob-bonus-skelly1a"></p>
+        <div class="stress-track mob-stress-track" id="mob-stress-skelly1a"></div>
+        <p class="stress-line" id="mob-remaining-skelly1a"></p>
+
+        <h4>Mob B &mdash; Size</h4>
+        <div class="notes-field" style="max-width:140px;">
+          <select class="mob-size-input" data-mob="skelly1b" id="mob-size-skelly1b">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          </select>
+        </div>
+        <p class="stress-line" id="mob-bonus-skelly1b"></p>
+        <div class="stress-track mob-stress-track" id="mob-stress-skelly1b"></div>
+        <p class="stress-line" id="mob-remaining-skelly1b"></p>
+
+        <div class="callout">
+          <div class="callout-title">Notes</div>
+          <p>Generic risen West-family dead/servants &mdash; not tied to Francis I's specific victims (Patience, Elias, and Caleb have their own journal entries and shrine elsewhere). Two independent mobs, each sized 1&ndash;6. Set a mob's size, then check off boxes as it takes hits &mdash; each box is one member down. A mob rolls its skill plus a bonus of +1 per 2 members (rounded down, shown live as "Mob skill") &mdash; a mob of 6 fights at Fight +4, not +2. Stress capacity is 2 boxes per member.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="monster-panel" id="panel-skelly2">
+      <div class="charcard">
+        <div class="card-head">
+          <img class="portrait" src="Media/skelly.png" alt="" onerror="this.style.display='none'">
+          <div>
+            <h3>Skelly II <span class="role">&mdash; Mob</span></h3>
+            <ul class="aspects">
+              <li class="aspect trouble">Doesn't remember</li>
+              <li class="aspect">Attacks the living for their insolence</li>
+            </ul>
+          </div>
+        </div>
+        <p><em>High Concept:</em> Risen West-Family Dead (later, stronger wave)</p>
+        <h4>Skills (base, before mob bonus)</h4>
+        <table>
+          <tr><th></th><th></th><th>Mob A</th><th>Mob B</th></tr>
+          <tr><th scope="row">Good (+3)</th><td>Fight</td><td id="mob-skelly2-fight-a">+3</td><td id="mob-skelly2-fight-b">+3</td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Athletics</td><td id="mob-skelly2-athletics-a">+2</td><td id="mob-skelly2-athletics-b">+2</td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p>Same notes as Skelly I &mdash; use this stat block for skeletons raised later in the night, when the White Lady is stronger. Stress capacity is 3 boxes per member, reflecting the stronger wave.</p>
+
+        <div class="callout">
+          <div class="callout-title">Notes</div>
+          <p>Same usage as Skelly I: two independent mobs, sized 1&ndash;6 each. Set a mob's size, then check off boxes as it takes hits &mdash; each box is one member down. The "Mob skill" line updates automatically to show the size bonus (+1 per 2 members, rounded down) added to the base Fight/Athletics.</p>
+        </div>
+
+        <h4>Mob A &mdash; Size</h4>
+        <div class="notes-field" style="max-width:140px;">
+          <select class="mob-size-input" data-mob="skelly2a" id="mob-size-skelly2a">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          </select>
+        </div>
+        <p class="stress-line" id="mob-bonus-skelly2a"></p>
+        <div class="stress-track mob-stress-track" id="mob-stress-skelly2a"></div>
+        <p class="stress-line" id="mob-remaining-skelly2a"></p>
+
+        <h4>Mob B &mdash; Size</h4>
+        <div class="notes-field" style="max-width:140px;">
+          <select class="mob-size-input" data-mob="skelly2b" id="mob-size-skelly2b">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          </select>
+        </div>
+        <p class="stress-line" id="mob-bonus-skelly2b"></p>
+        <div class="stress-track mob-stress-track" id="mob-stress-skelly2b"></div>
+        <p class="stress-line" id="mob-remaining-skelly2b"></p>
+
+      </div>
+    </div>
+
+    <div class="monster-panel" id="panel-golem">
+      <div class="charcard">
+        <h3>Grave Golem</h3>
+        <ul class="aspects">
+          <li class="aspect">Attacks the living for their insolence</li>
+        </ul>
+        <h4>Skills</h4>
+        <table>
+          <tr><th scope="row">Good (+3)</th><td>Fight</td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Athletics</td><td>Provoke</td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Will</td><td></td><td></td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p><strong>Knockback:</strong> on a success with style on a Fight attack, reduce the hit by 1 to move your opponent one zone (no impeding situation aspects).</p>
+        <h4>Physical Stress</h4>
+        <div class="stress-track">
+          <div class="stress-group"><label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label></div>
+        </div>
+        <h4>Mental Stress</h4>
+        <p class="stat-immune">&mdash;</p>
+        <div class="callout">
+          <div class="callout-title">Notes</div>
+          <p>A hulking construct of grave-dirt and old bone that guards the mausoleum &mdash; something built out of grief and left to rot into rage, standing watch over what's inside whether anyone asked it to or not. It doesn't need more backstory than that; it's fine as a monster for a monster's sake. (Francis II's own story is told elsewhere &mdash; his journal entries scattered through the house, and the shrine he built over his father's tomb, right here in this room.)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="monster-panel" id="panel-mist">
+      <div class="charcard">
+        <h3>Mist</h3>
+        <ul class="aspects">
+          <li class="aspect">Magical Barrier</li>
+        </ul>
+        <h4>Skills</h4>
+        <table>
+          <tr><th scope="row">Good (+3)</th><td>Athletics</td><td></td><td></td></tr>
+        </table>
+        <h4>Stunts</h4>
+        <p><strong>Reflection:</strong> successful hits on the barrier of 2+ stress throw the attacker backward, with a chance (difficulty 2) to inflict damage/stress.</p>
+        <h4>Physical Stress <span class="stat-immune">(1 through 10 &mdash; see original scale)</span></h4>
+        <div class="stress-track">
+          <div class="stress-group">
+            <label><input type="checkbox"> 1</label><label><input type="checkbox"> 2</label><label><input type="checkbox"> 3</label><label><input type="checkbox"> 4</label><label><input type="checkbox"> 5</label>
+            <label><input type="checkbox"> 6</label><label><input type="checkbox"> 7</label><label><input type="checkbox"> 8</label><label><input type="checkbox"> 9</label><label><input type="checkbox"> 10</label>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">Notes</div>
+          <p>The mist's appearance shifts over the course of the night: dense and strong at first, in the immediate aftermath of the s&eacute;ance gone wrong, but by the time dawn approaches, it should look thin and pale enough that it'll plausibly burn off in the morning sunlight. Players aren't likely to figure this out on their own &mdash; it's offered as a Lore roll on The Grounds, the moment they first realize they're actually trapped.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+<script>
+  let currentRoster = 6;
+  function setRoster(n){
+    currentRoster = Number(n);
+    document.querySelectorAll('.ledger-tab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.set === String(n));
+    });
+    document.querySelectorAll('[data-roster]').forEach(el => {
+      const rosters = el.dataset.roster.split(',').map(s => s.trim());
+      el.classList.toggle('hide', !rosters.includes(String(n)));
+    });
+    try { localStorage.setItem('shagbark-roster', n); } catch(e){}
+    if (typeof onRosterChange === 'function') onRosterChange();
+  }
+  document.querySelectorAll('.ledger-tab').forEach(btn => {
+    btn.addEventListener('click', () => setRoster(btn.dataset.set));
+  });
+  let initialRoster = 6;
+  try {
+    const saved = localStorage.getItem('shagbark-roster');
+    if (saved) initialRoster = Number(saved);
+  } catch(e){}
+</script>
+
+<script>
+  // ---- Monster tabs ----
+  function activateMonsterTab(id){
+    const btn = document.querySelector('.monster-tab-btn[data-monster="' + id + '"]');
+    const panel = document.getElementById('panel-' + id);
+    if (!btn || !panel) return false;
+    document.querySelectorAll('.monster-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.monster-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    panel.classList.add('active');
+    return true;
+  }
+  document.querySelectorAll('.monster-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => activateMonsterTab(btn.dataset.monster));
+  });
+  // Deep-link support: a link ending in #francis2, #whitelady, etc. activates that tab on load.
+  if (window.location.hash) {
+    const targetId = window.location.hash.slice(1);
+    if (activateMonsterTab(targetId)) {
+      window.addEventListener('load', () => {
+        document.getElementById('panel-' + targetId).scrollIntoView({behavior: 'instant', block: 'start'});
+      });
+    }
+  }
+
+  function closePlayerView(){
+    document.getElementById('player-view-overlay').classList.remove('open');
+  }
+  function showCharacterPhoto(src, name){
+    const content = document.getElementById('player-view-content');
+    content.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = name || '';
+    img.className = 'player-view-img';
+    img.onerror = function(){ this.replaceWith(document.createTextNode('[image not found: ' + src + ']')); };
+    content.appendChild(img);
+    document.getElementById('player-view-overlay').classList.add('open');
+  }
+
+  const MONSTER_IDS = ['francis2','nathaniel','whitelady','golem','mist'];
+
+  function saveMonsterState(){
+    const state = {};
+    MONSTER_IDS.forEach(id => {
+      const panel = document.getElementById('panel-' + id);
+      if (!panel) return;
+      state[id] = {
+        stress: Array.from(panel.querySelectorAll('.stress-group input[type="checkbox"]')).map(cb => cb.checked),
+        cons: Array.from(panel.querySelectorAll('.consequence-row input[type="text"]')).map(inp => inp.value),
+      };
+    });
+    try { localStorage.setItem('shagbark-monster-state', JSON.stringify(state)); } catch(e){}
+  }
+
+  function loadMonsterState(){
+    let state = {};
+    try {
+      state = JSON.parse(localStorage.getItem('shagbark-monster-state') || '{}');
+    } catch(e){ return; }
+    MONSTER_IDS.forEach(id => {
+      const panel = document.getElementById('panel-' + id);
+      if (!panel || !state[id]) return;
+      const checkboxes = panel.querySelectorAll('.stress-group input[type="checkbox"]');
+      (state[id].stress || []).forEach((val, i) => { if (checkboxes[i]) checkboxes[i].checked = val; });
+      const inputs = panel.querySelectorAll('.consequence-row input[type="text"]');
+      (state[id].cons || []).forEach((val, i) => { if (inputs[i]) inputs[i].value = val; });
+    });
+  }
+
+  document.querySelectorAll('.monster-panel input[type="checkbox"], .monster-panel input[type="text"]').forEach(el => {
+    el.addEventListener('input', saveMonsterState);
+    el.addEventListener('change', saveMonsterState);
+  });
+  loadMonsterState();
+
+  // ---- Skelly mobs (Fate mob rules: skill bonus scales with size, stress capacity = boxes-per-member x size) ----
+  const MOB_IDS = ['skelly1a','skelly1b','skelly2a','skelly2b'];
+  const MOB_DEFAULT_SIZE = 3;
+  const MOB_BOXES_PER_MEMBER = { skelly1a: 2, skelly1b: 2, skelly2a: 3, skelly2b: 3 };
+  const MOB_BASE_SKILL = { skelly1a: 'Fight +2 / Athletics +1', skelly1b: 'Fight +2 / Athletics +1', skelly2a: 'Fight +3 / Athletics +2', skelly2b: 'Fight +3 / Athletics +2' };
+  const MOB_BASE_VALUE = {
+    skelly1: { fight: 2, athletics: 1 },
+    skelly2: { fight: 3, athletics: 2 },
+  };
+
+  function mobSkillBonus(size){ return Math.floor(size / 2); }
+
+  function effectiveMobSize(mobId, dropdownSize){
+    // A mob gets weaker as members are taken out: every boxesPerMember stress boxes checked = one fewer member.
+    const checked = document.querySelectorAll('#mob-stress-' + mobId + ' input[type="checkbox"]:checked').length;
+    const membersDown = Math.floor(checked / MOB_BOXES_PER_MEMBER[mobId]);
+    return Math.max(0, dropdownSize - membersDown);
+  }
+
+  function updateMobBonus(mobId, dropdownSize){
+    const effSize = effectiveMobSize(mobId, dropdownSize);
+    const bonus = mobSkillBonus(effSize);
+    const baseType = mobId.startsWith('skelly1') ? 'skelly1' : 'skelly2';
+    const subLetter = mobId.endsWith('a') ? 'a' : 'b';
+    const values = MOB_BASE_VALUE[baseType];
+
+    document.getElementById('mob-bonus-' + mobId).textContent =
+      `Mob skill: ${MOB_BASE_SKILL[mobId]} +${bonus} (size bonus, ${effSize} member${effSize===1?'':'s'} standing) = effectively Fight +${values.fight + bonus}, Athletics +${values.athletics + bonus}.`;
+
+    Object.keys(values).forEach(skill => {
+      const cell = document.getElementById(`mob-${baseType}-${skill}-${subLetter}`);
+      if (cell) cell.textContent = `+${values[skill] + bonus}`;
+    });
+  }
+
+  function updateMobRemaining(mobId, totalBoxes, dropdownSize){
+    const checked = document.querySelectorAll('#mob-stress-' + mobId + ' input[type="checkbox"]:checked').length;
+    document.getElementById('mob-remaining-' + mobId).textContent =
+      `${checked} of ${totalBoxes} stress boxes marked.`;
+    updateMobBonus(mobId, dropdownSize);
+  }
+
+  function renderMobStress(mobId, size, checkedStates){
+    const track = document.getElementById('mob-stress-' + mobId);
+    const totalBoxes = size * MOB_BOXES_PER_MEMBER[mobId];
+    const group = document.createElement('div');
+    group.className = 'stress-group';
+    for (let i = 0; i < totalBoxes; i++) {
+      const label = document.createElement('label');
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.dataset.mobIndex = i;
+      if (checkedStates && checkedStates[i]) cb.checked = true;
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode(' ' + (i + 1)));
+      group.appendChild(label);
+      cb.addEventListener('change', () => { saveMobState(); updateMobRemaining(mobId, totalBoxes, size); });
+    }
+    track.innerHTML = '';
+    track.appendChild(group);
+    updateMobBonus(mobId, size);
+    updateMobRemaining(mobId, totalBoxes, size);
+  }
+
+  function saveMobState(){
+    const state = {};
+    MOB_IDS.forEach(id => {
+      const sizeInput = document.getElementById('mob-size-' + id);
+      const checkboxes = document.querySelectorAll('#mob-stress-' + id + ' input[type="checkbox"]');
+      state[id] = {
+        size: Number(sizeInput.value) || MOB_DEFAULT_SIZE,
+        checked: Array.from(checkboxes).map(cb => cb.checked),
+      };
+    });
+    try { localStorage.setItem('shagbark-mob-state', JSON.stringify(state)); } catch(e){}
+  }
+
+  function loadMobState(){
+    let state = {};
+    try { state = JSON.parse(localStorage.getItem('shagbark-mob-state') || '{}'); } catch(e){}
+    MOB_IDS.forEach(id => {
+      const saved = state[id] || {};
+      const size = saved.size || MOB_DEFAULT_SIZE;
+      document.getElementById('mob-size-' + id).value = size;
+      renderMobStress(id, size, saved.checked || []);
+    });
+  }
+
+  MOB_IDS.forEach(id => {
+    document.getElementById('mob-size-' + id).addEventListener('change', (e) => {
+      const size = Number(e.target.value) || MOB_DEFAULT_SIZE;
+      renderMobStress(id, size, []); // resizing starts this mob fresh
+      saveMobState();
+    });
+  });
+  loadMobState();
+
+  // ---- Session notes ----
+
+
+  setRoster(initialRoster);
+</script>
+
+<div id="player-view-overlay" class="player-view-overlay" onclick="if(event.target===this) closePlayerView()">
+  <div class="player-view-box">
+    <button class="player-view-close" onclick="closePlayerView()">&times;</button>
+    <div class="player-view-content" id="player-view-content"></div>
+  </div>
+</div>
+
+<style>
+  footer.site-footer{
+    max-width:700px;
+    margin:60px auto 0;
+    padding:24px 24px 40px;
+    border-top:1px solid var(--hair);
+    text-align:center;
+    font-size:0.85rem;
+    font-style:italic;
+    color:var(--paper-dim);
+    line-height:1.7;
+  }
+  footer.site-footer a{
+    color:var(--brass-bright);
+    text-decoration:underline;
+  }
+  footer.site-footer a:hover{
+    color:var(--paper);
+  }
+</style>
+<footer class="site-footer">
+  <p>Ragnabark was created by Anaya, with assistance from generous play testers. This presentation was assisted by Claude. Play it without her? <a href="mailto:jones.anaya@gmail.com?subject=ragnabark">Let Anaya know how it went</a>. Want to see more of Anaya's shenanigans? Visit <a href="https://anayathelibrarian.github.io/">her page</a>.</p>
+</footer>
+</body>
+</html>

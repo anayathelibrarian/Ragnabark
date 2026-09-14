@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intro: Ragnabark</title>
+<title>Lore: Ragnabark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -166,7 +166,6 @@
   }
   p{margin:0 0 14px;}
   ul{margin:0 0 14px; padding-left:22px;}
-  ol{margin:0 0 14px; padding-left:22px;}
   li{margin-bottom:6px;}
 
   .callout{
@@ -294,21 +293,6 @@
     border-color:var(--wine-bright);
     color:var(--wine-bright);
     background:rgba(138,58,58,0.1);
-  }
-  ul.aspects li.aspect.game-aspect-1{
-    border-color:var(--brass-bright);
-    color:var(--brass-bright);
-    background:rgba(185,144,63,0.1);
-  }
-  ul.aspects li.aspect.game-aspect-2{
-    border-color:#6fa8dc;
-    color:#6fa8dc;
-    background:rgba(111,168,220,0.1);
-  }
-  ul.aspects li.aspect.game-aspect-3{
-    border-color:#8fbc6f;
-    color:#8fbc6f;
-    background:rgba(143,188,111,0.1);
   }
   .link-mark{
     font-weight:600;
@@ -1184,6 +1168,8 @@
 
 <style>
   .page-nav{display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:0 0 32px; padding:14px 0; border-bottom:1px solid var(--hair);}
+  .npc-link{font-size:0.65em; font-weight:normal; font-style:italic; color:var(--paper-dim); text-decoration:none; vertical-align:middle;}
+  .npc-link:hover{color:var(--brass-bright);}
   .page-nav a{
     font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.05rem;
     color:var(--paper-dim); text-decoration:none; padding:6px 16px; border:1px solid var(--hair); border-radius:20px;
@@ -1198,166 +1184,147 @@
 </header>
 
 <nav class="page-nav">
-  <a href="index.html" class="current">Intro</a>
-  <a href="lore.html">Lore</a>
+  <a href="index.html">Intro</a>
+  <a href="lore.html" class="current">Lore</a>
   <a href="roster.html">Roster</a>
   <a href="monsters.html">Monsters</a>
   <a href="tracker.html">Play Tracker</a>
 </nav>
 
-<p class="subtitle" style="text-align:center; margin:-16px 0 32px;">A spooky FATE one-shot for 4-7 players.</p>
-
 <main>
-<section id="section-intro-cw">
-    <div class="part-divider" style="margin-top:8px;">
-      <h2 class="part-label" style="margin:0;">Player Intro &amp; Content Warnings</h2>
-      <button type="button" class="part-toggle" id="intro-cw-toggle" onclick="toggleIntroCW()">Collapse</button>
+<section>
+    <h2>The West Family</h2>
+
+    <h3>Francis West I <span class="role">&mdash; Easy to Hate, the Real Antagonist</span></h3>
+    <p>Deputy Governor of the Colony and Dominion of Virginia. Married three times. He never stopped grieving his first wife, and over decades tried repeatedly &mdash; and in vain &mdash; to bring her back through ritually sacrificing people entirely under his power: servants, wards, debtors, anyone with no one positioned to protect them. He kept a hidden ritual room in the basement where this happened, again and again, for years. His household simply lost people, quietly, and no one with power ever asked where they went.</p>
+    <p>When his daughter Elizabeth came to him for help after her husband's death, he responded exactly the way he'd always treated people beneath him: as a problem to be managed, not a person to be helped.</p>
+
+    <h3>Elizabeth West <span class="role">&mdash; The White Lady</span> <a href="monsters.html#whitelady" class="npc-link">(Monster stat block &rarr;)</a></h3>
+    <p>Fell in love with a local millworker and married him against her father's wishes in 1632. When he died in a mill accident, she came home with her infant son and asked her father for help. He told her coldly that she'd never find a good husband with another man's child in tow, and heavily implied that he could help her, if only she didn't have her son. Distraught and cornered, she drowned her son &mdash; and her father then married her off to Richard Saltonstall as though nothing unforgivable had happened. She died still trapped in that arrangement, and now haunts the manse, wanting revenge on the father who built the corner she couldn't see a way out of.</p>
+    <div class="callout">
+      <div class="callout-title">Running Elizabeth</div>
+      <p>The living Elizabeth's years of pain, self-loathing and anger at her father created her ghost- but the White Lady is no longer a whole human- she's an angry, scared echo. She is a monster, but she's a monster that is an echo of the monstrous in all of us.</p>
     </div>
-    <div id="intro-cw-content">
-      <h3>Intro for Players</h3>
+
+    <h3>Francis West II <span class="role">&mdash; Justified, Not Forgiven</span> <a href="monsters.html#francis2" class="npc-link">(Monster stat block &rarr;)</a></h3>
+    <p>Elizabeth's brother, close to her in life. Too late to save his sister from his choices, Francis Jr. learns what his father has done both to his sister and the people under West care for many years, and drowns Francis I in the estate's pond and passed it off as an accident &mdash; not in a blind rage, but because he was the one person who correctly assigned blame. He'd found his father's hidden ritual room and pieced together the pattern of disappearances over the years, but not in time to save his beloved sister from a similar fate: people treated as resources to spend and discard. He finally understood who'd actually built the trap they all lived in, and saw a way out. He's still haunted by his own choice, which is why he lingers as a ghost rather than having found peace &mdash; being right about the killing doesn't mean he's made peace with having done it.</p>
+    <p>He didn't remember all of the ritual room's victims. In his surviving journal, scattered in fragments around the house, he describes going around asking anyone in the household or town who'd been there long enough &mdash; trying to recover names, fragments, anything &mdash; for people his father had erased. He didn't recover everyone; what he did find is discoverable as journal entries throughout the Manse, and gathered into a private shrine he built over his father's own tomb.</p>
+
+    <h3>Nathaniel West</h3>
+    <p>A much later descendant, now a 300-year-old (technically 341) vampire, out of step with the modern world. Not central to tonight's plot, but present in the house and a potential complication or resource depending on how the party engages with him.</p>
+
+    <h3>Other West Dead</h3>
+    <p>As the teenagers explore the old manse, they are attacked by animated skeletons &mdash; first occasionally and by weak foes. The longer they are trapped, the more frequent and strong their skeletal adversaries become. These are the risen West dead, unnamed ancestors who are raised by the White Lady. They are Skelly I and Skelly II.</p>
+
+    <h3>Timeline</h3>
+    <details>
+      <summary>Show / hide timeline</summary>
       <div class="callout">
-        <p>Join us for a haunted and atmospheric FATE horror one-shot. You don't need to prepare anything, because when the game starts, your character doesn't remember who they are, where they are, or what the heck happened. But you'll need to figure it out, because someone thought a s&eacute;ance was a good idea. Spoilers: It wasn't.</p>
-        <p class="stress-line">Safe to read aloud or share with players as-is &mdash; no spoilers.</p>
+        <p><strong>1623</strong> &mdash; Francis I's younger brothers, John and Nathaniel De La Warr, die (England, before the Virginia branch of the family takes shape).</p>
+        <p><strong>1632</strong> &mdash; Elizabeth marries a local millworker against her father's wishes. Her husband's death, her return home with her infant son, and the tragedy that follows all happen in short order after this.</p>
+        <p><strong>1633</strong> &mdash; Francis II's journal entry on Patience (found in the Library).</p>
+        <p><strong>1634</strong> &mdash; Francis II's journal entry on Elias (found in the Southeast Servant's Quarters).</p>
+        <p><strong>1635</strong> &mdash; Francis II's journal entry on Caleb, the angriest of the three (found in the Southwest Servant's Quarters).</p>
+        <p><strong>1636</strong> &mdash; Francis II drowns Francis I in the estate's pond and writes his confession.</p>
+        <p><strong>~1646 (calculated, not stated anywhere in-world)</strong> &mdash; if Nathaniel West is genuinely 341 years old as of tonight, this is roughly when he was born or turned.</p>
+        <p><strong>1987</strong> &mdash; tonight. The séance, the ritual, and everything that follows.</p>
       </div>
+    </details>
+  </section>
 
-      <h3>Content Warnings</h3>
-      <p><strong>Central to the Story:</strong></p>
-      <ul>
-        <li>Vehicular manslaughter and its cover-up</li>
-        <li>Gambling addiction</li>
-        <li>Infidelity and blackmail</li>
-        <li>Body horror</li>
-        <li>General horror-genre content (involuntary visions, jump-scare beats)</li>
-      </ul>
-      <p><strong>Present, But in the Background:</strong></p>
-      <ul>
-        <li>Character death, including the death of a child</li>
-        <li>Murder</li>
-        <li>Slavery and the death of an enslaved person</li>
-        <li>Suicide (referenced, not depicted)</li>
-        <li>Parental abuse/coercion and a severely dysfunctional father-child relationship</li>
-        <li>Domestic violence</li>
-        <li>Alcohol at a teen gathering</li>
-      </ul>
+  <section>
+    <h2>The Manse and Grounds</h2>
+    <h3>Shagbark Manse</h3>
+    <img src="Media/shagbarkmanse.jpg" alt="" onerror="this.style.display='none'">
+    <p class="image-credit">Photo: the historic Mordecai House at <a href="https://raleighnc.gov/parks-and-recreation/places/mordecai-historic-park" target="_blank" rel="noopener">Mordecai Historic Park</a>, Raleigh, NC &mdash; used here as inspiration for Shagbark Manse.</p>
+    <p>The Manse was originally built by Francis West, but it has been expanded and redecorated over the years, so rooms show influence from a wide variety of time periods and styles. Now in disrepair, Tiffany's family has moved back in and began the process of reclaiming rooms from the dust and time. The players don't know what the layout of the house is until they build a map by moving through it. Use the PowerPoint document to reveal rooms as you enter them.</p>
+    <h4>Second Floor</h4>
+    <img src="Media/secondfloor.png" alt="" onerror="this.style.display='none'">
+    <h4>First Floor</h4>
+    <img src="Media/firstfloor.png" alt="" onerror="this.style.display='none'">
+    <p>Players will start here, in the ballroom. It's up to them where to go from there.</p>
+    <h4>Basement</h4>
+    <img src="Media/basement.png" alt="" onerror="this.style.display='none'">
+
+    <h3>The Grounds</h3>
+    <img src="Media/grounds.png" alt="" onerror="this.style.display='none'">
+    <p>The Manse sits at the top of a stately driveway, overlooking the small and prosperous town, but it isn't the only building on the property. An old stable has been converted to a garage. There's another old Barn that hasn't been converted, where the players can meet Nathaniel, along with the wash house and the West Family Mausoleum, where the skeletons originate from, all arrayed around a sizable pond in the middle of the grounds. Around all of this is a magical mist barrier, that prevents the characters from leaving.</p>
+
+    <h3>Four Eras Under One Roof</h3>
+    <p>Because the Manse has been expanded and redecorated across generations, individual rooms don't share one consistent style &mdash; you'll find colonial, antebellum, federalist, gilded age, and postwar influences side by side, sometimes in adjoining rooms. None of this is assigned room-by-room in this document; treat the images below as a mood board and place styles wherever feels right as you describe each room.</p>
+    <div class="style-gallery">
+      <div class="style-group">
+        <div class="style-label">Colonial</div>
+        <div class="style-images">
+          <img src="Media/colonial1.jpg" alt="" onerror="this.style.display='none'">
+          <img src="Media/colonial2.jpg" alt="" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="style-group">
+        <div class="style-label">Antebellum</div>
+        <div class="style-images">
+          <img src="Media/antebellum1.png" alt="" onerror="this.style.display='none'">
+          <img src="Media/antebellum2.png" alt="" onerror="this.style.display='none'">
+          <img src="Media/antebellum3.png" alt="" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="style-group">
+        <div class="style-label">Federalist</div>
+        <div class="style-images">
+          <img src="Media/federalist.jpg" alt="" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="style-group">
+        <div class="style-label">Gilded Age</div>
+        <div class="style-images">
+          <img src="Media/gilded1.png" alt="" onerror="this.style.display='none'">
+          <img src="Media/gilded2.png" alt="" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="style-group">
+        <div class="style-label">Postwar</div>
+        <div class="style-images">
+          <img src="Media/postwar1.png" alt="" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Using the room information in this document</div>
+      <p>The aspects, floor, and window direction shown for each room (under Rooms Explored, once you pick "party currently in") are a starting guide, not a script &mdash; describe each room however fits the moment and the style you've chosen for it. Anything the party actually <em>needs</em> to know or that changes how a scene plays out lives in the Hints Browser instead, not in the room overview.</p>
+      <p>Within a room's hints, look for ones flagged <span class="notable-tag" style="display:inline-block;">&#9888; Mechanical effect</span> before you improvise &mdash; those are the ones with a real rules impact (a forced roll, an NPC encounter, a lasting effect), like the Purple Bedchamber quietly convincing everyone they're cats. They're sorted to the top of a room's results in the Hints Browser so you see them first. Everything else is fair game to reskin, expand, or skip based on what you already know about the house.</p>
     </div>
   </section>
 
-  <section id="section-overview">
-    <h2>Overview</h2>
-    <p><em>Game Aspects:</em></p>
-    <ul class="aspects">
-      <li class="aspect game-aspect-1">Mid-nineteen eighties</li>
-      <li class="aspect game-aspect-2">A world mostly like our own</li>
-      <li class="aspect game-aspect-3">Small Virginia town</li>
+  <section>
+    <h2>The Night</h2>
+
+    <h3>Before the House</h3>
+    <p>Earlier that day: Tiffany, new to town, is eating lunch with Corey, with whom she thinks she might be building a friendship, complaining that her parents are away for the weekend. Brandon overhears and invites himself over &mdash; then invites the rest of the group without Tiffany's knowledge. That evening they arrive with drinks, and despite her reservations, Tiffany lets them in and gives everyone a tour.</p>
+
+    <h3>The Séance That Wasn't</h3>
+    <p>In the library, someone finds an old book that explains how to hold a séance &mdash; and suggests they try it, tonight, for the manse's famous White Lady. The group gathers in the ballroom, draws a chalk circle, lights candles, pricks their fingers for a few drops of blood. The reader recites the incantation. Nothing happens &mdash; then the room explodes with otherworldly energy, throwing everyone from the circle. Everyone passes out.</p>
+    <p>What actually happened: several pages of the book were stuck together, and the rite performed was half séance, half a ritual to substantiate the dead &mdash; accidentally summoning a spirit and strengthening its bond to the material plane. This is discoverable later, in the book itself, back in the ballroom.</p>
+
+    <h3>Waking Up</h3>
+    <p>The players wake with no memory of who they are. The house is locked in on itself &mdash; no phone signal, no way out that anyone can find right away. As they explore, they'll piece together the house's history, their own identities, and each other's secrets (see the workbook's Knowledge and Hints tabs for the full, room-by-room breakdown).</p>
+  </section>
+
+  <section>
+    <h2>The Four Endings</h2>
+    <p>The White Lady will not return to her eternal slumber until one of these is achieved. The mist barrier will weaken in the sunlight of the new day, but if the players don't take care of the White Lady problem, the dawn will release the risen West dead on their town. The White Lady can be spoken to directly (Empathy, Deceive, or Provoke, difficulty and requirements noted per hint in the workbook) and will explain her need for vengeance if asked.</p>
+    <ul>
+      <li><strong>End Game 1 &mdash; Burn Him:</strong> retrieve Francis I's remains from the family mausoleum and burn them, without ceremony, in the downstairs kitchen hearth. The house isn't built for a fire this size &mdash; it will catch fire. Expect significant physical resistance along the way.</li>
+      <li><strong>End Game 2 &mdash; Tell Her the Truth About Her Brother:</strong> reveal to the White Lady that Francis II killed their father by drowning him. Requires first discovering Francis II's action.</li>
+      <li><strong>End Game 3 &mdash; Expose Francis I:</strong> promise to reveal the truth about Francis I to the world. Requires first discovering his hidden ritual room in the basement.</li>
+      <li><strong>End Game 4 &mdash; Banish Her:</strong> use the ritual itself (the one they accidentally half-performed) to banish her properly, now that they understand how it actually works. The full ritual text is discoverable in the Southwest Servant's Quarters &mdash; one of the "missing" library volumes, relocated to storage downstairs.</li>
     </ul>
-    <p>Each player in this one-to-two-session Fate Core adventure begins the game with no memories of who they are, where they are, or how they got there. Each of the 4&ndash;7 players starts with a totally blank character sheet, and will learn their own name, High Concept, Trouble, and skills as they explore the dilapidated old house they find themselves in. This game is appropriate for those unfamiliar with the Fate system, as long as the GM feels comfortable instructing as they go.</p>
-    <p>Brandon Ross talks his and his friends into an invitation to the old West Mansion, Shagbark Manse, from newly-to-town Tiffany West after hearing her parents aren't home. The resulting group of teenagers are looking for a little fun, a little bit of trouble on this Friday night in 1987. Instead of a harmless spooky séance in the notoriously haunted house,  they accidentally perform a ritual with real power, half séance and half something older, and wake up trapped inside Shagbark Manse with no memory of who they are or how they got there. The house is haunted by Elizabeth West &mdash; the White Lady &mdash; who died with a terrible secret and an unfinished need for revenge. As the night goes on, it's clear she's becoming more and more powerful. The players have until dawn to piece together their own identities, the house's history, and a way out, or it just might be the end of the world.</p>
-<p>This page covers the setting and logistics. Use the navigation bar above for the West family history, the night's events, and the four endings (Lore), full character sheets (Roster), monster stat blocks (Monsters), and the live session tools &mdash; clock, party progress, rooms explored, and the hints browser (Play Tracker).</p>
-
-    
+    <p>Any of these can end the night. Nothing stops the party from trying more than one in sequence if an earlier attempt goes wrong.</p>
   </section>
+  </div>
 
-  <section>
-    <h2>Amnesia Logistics</h2>
-    <p>Every player starts with a completely blank character sheet &mdash; just their name. They don't know their own High Concept, Trouble, skills, or relationships going in. As the session progresses, hints and room discoveries hand back pieces of their own identity, and players fill in their sheet live, in front of the table, as they learn who they are.</p>
-    <p>Encourage players to explore the house around them, using skills they don't know if they have &mdash; when they roll a skill, tell them how good they are at it, and any related aspects or stunts. Each character will have some skills at +0, and unlike typical Fate games, it's helpful for players to note these skills.</p>
-
-    <p>Ideally, players will quickly learn a few key facts about their characters. Encourage them to play their characters to what they know, even if that's limited. Find a way that works for your group to share things with the entire table, or with just a single player, though it's okay to ask them to roll to hide their discovery if it's a big one.</p>
-  </section>
-  <section>
-    <h2>FATE: Modified</h2>
-    <p>In many Fate games, the Notice and Investigate skills play important, distinct roles. To keep play in this one-shot streamlined and just a little bit simpler, I've combined Notice and Investigate into <strong>Investigate</strong>, and Athletics and Physique into <strong>Athletics</strong>. Use the combined skill whenever you would use either, including when determining stress boxes, though that's done for you.</p>
-    <p>Here's the full list of skills used in this game, and which actions each one can take:</p>
-    <table>
-      <tr><th>Skill</th><th>Overcome</th><th>Advantage</th><th>Attack</th><th>Defend</th></tr>
-      <tr><td>Crafts</td><td>x</td><td>x</td><td></td><td></td></tr>
-      <tr><td>Investigate</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Lore</td><td>x</td><td>x</td><td></td><td></td></tr>
-      <tr><td>Burglary</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Deceive</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Stealth</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Athletics</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Fight</td><td>x</td><td>x</td><td>x</td><td>x</td></tr>
-      <tr><td>Shoot</td><td>x</td><td>x</td><td>x</td><td></td></tr>
-      <tr><td>Empathy</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Provoke</td><td>x</td><td>x</td><td>x</td><td></td></tr>
-      <tr><td>Will</td><td>x</td><td>x</td><td>x</td><td>x</td></tr>
-    </table>
-    <p>For more information, consult <a href="https://fate-srd.com/fate-core">FATE core</a>.</p>
-  </section>
-
-  <section>
-    <h2>Modality</h2>
-    <p>Ragnabark can be played around a physical table, or online.</p>
-
-    <h3>At the Table, Before the Game</h3>
-    <ol>
-      <li>Print blank character sheets, with physical and mental stress calibrated for each character.</li>
-      <li>(optional) Print FATE cheat sheets.</li>
-      <li>Use the Print button on the Play Tracker page to print:
-        <ul>
-          <li>Physical artifacts characters can find in the manse</li>
-          <li>Character stunts</li>
-          <li>Hints that relate to individual memories or secrets</li>
-        </ul>
-      </li>
-    </ol>
-
-    <h3>Online, Before the Game</h3>
-    <ol>
-      <li>Prep digital character sheets to share.</li>
-      <li>Choose a meeting software.</li>
-      <li>Set up a group chat and private chats with each player.</li>
-    </ol>
-  </section>
-
+  
 </main>
-<script>
-  let currentRoster = 6;
-  function setRoster(n){
-    currentRoster = Number(n);
-    document.querySelectorAll('.ledger-tab').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.set === String(n));
-    });
-    document.querySelectorAll('[data-roster]').forEach(el => {
-      const rosters = el.dataset.roster.split(',').map(s => s.trim());
-      el.classList.toggle('hide', !rosters.includes(String(n)));
-    });
-    try { localStorage.setItem('shagbark-roster', n); } catch(e){}
-    if (typeof onRosterChange === 'function') onRosterChange();
-  }
-  document.querySelectorAll('.ledger-tab').forEach(btn => {
-    btn.addEventListener('click', () => setRoster(btn.dataset.set));
-  });
-  let initialRoster = 6;
-  try {
-    const saved = localStorage.getItem('shagbark-roster');
-    if (saved) initialRoster = Number(saved);
-  } catch(e){}
-</script>
-
-<script>
-  function toggleIntroCW(){
-    const content = document.getElementById('intro-cw-content');
-    const btn = document.getElementById('intro-cw-toggle');
-    const collapsed = content.classList.toggle('collapsed');
-    btn.textContent = collapsed ? 'Expand' : 'Collapse';
-    try { localStorage.setItem('shagbark-intro-cw-collapsed', collapsed ? '1' : '0'); } catch(e){}
-  }
-  (function initIntroCW(){
-    let collapsed = false; // open by default
-    try {
-      const saved = localStorage.getItem('shagbark-intro-cw-collapsed');
-      if (saved !== null) collapsed = saved === '1';
-    } catch(e){}
-    if (collapsed) {
-      document.getElementById('intro-cw-content').classList.add('collapsed');
-      document.getElementById('intro-cw-toggle').textContent = 'Expand';
-    }
-  })();
-
-  setRoster(initialRoster);
-</script>
 <style>
   footer.site-footer{
     max-width:700px;

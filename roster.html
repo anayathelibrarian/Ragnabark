@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intro: Ragnabark</title>
+<title>Roster: Ragnabark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -166,7 +166,6 @@
   }
   p{margin:0 0 14px;}
   ul{margin:0 0 14px; padding-left:22px;}
-  ol{margin:0 0 14px; padding-left:22px;}
   li{margin-bottom:6px;}
 
   .callout{
@@ -295,21 +294,6 @@
     color:var(--wine-bright);
     background:rgba(138,58,58,0.1);
   }
-  ul.aspects li.aspect.game-aspect-1{
-    border-color:var(--brass-bright);
-    color:var(--brass-bright);
-    background:rgba(185,144,63,0.1);
-  }
-  ul.aspects li.aspect.game-aspect-2{
-    border-color:#6fa8dc;
-    color:#6fa8dc;
-    background:rgba(111,168,220,0.1);
-  }
-  ul.aspects li.aspect.game-aspect-3{
-    border-color:#8fbc6f;
-    color:#8fbc6f;
-    background:rgba(143,188,111,0.1);
-  }
   .link-mark{
     font-weight:600;
   }
@@ -392,7 +376,7 @@
     border:1px solid var(--hair);
     margin:0;
   }
-  .charcard h5{
+  .charcard h4{
     font-family:'Cormorant Garamond', serif;
     color:var(--brass);
     font-style:italic;
@@ -1198,118 +1182,368 @@
 </header>
 
 <nav class="page-nav">
-  <a href="index.html" class="current">Intro</a>
+  <a href="index.html">Intro</a>
   <a href="lore.html">Lore</a>
-  <a href="roster.html">Roster</a>
+  <a href="roster.html" class="current">Roster</a>
   <a href="monsters.html">Monsters</a>
   <a href="tracker.html">Play Tracker</a>
 </nav>
-
-<p class="subtitle" style="text-align:center; margin:-16px 0 32px;">A spooky FATE one-shot for 4-7 players.</p>
+  <div class="ledger">
+    <p class="ledger-label">How many are playing tonight?</p>
+    <div class="ledger-tabs" role="tablist" aria-label="Choose player count">
+      <button class="ledger-tab" data-set="4"><span class="n">4</span><span class="lbl">players</span></button>
+      <button class="ledger-tab" data-set="5"><span class="n">5</span><span class="lbl">players</span></button>
+      <button class="ledger-tab active" data-set="6"><span class="n">6</span><span class="lbl">players</span></button>
+      <button class="ledger-tab" data-set="7"><span class="n">7</span><span class="lbl">players</span></button>
+    </div>
+  </div>
 
 <main>
-<section id="section-intro-cw">
-    <div class="part-divider" style="margin-top:8px;">
-      <h2 class="part-label" style="margin:0;">Player Intro &amp; Content Warnings</h2>
-      <button type="button" class="part-toggle" id="intro-cw-toggle" onclick="toggleIntroCW()">Collapse</button>
-    </div>
-    <div id="intro-cw-content">
-      <h3>Intro for Players</h3>
-      <div class="callout">
-        <p>Join us for a haunted and atmospheric FATE horror one-shot. You don't need to prepare anything, because when the game starts, your character doesn't remember who they are, where they are, or what the heck happened. But you'll need to figure it out, because someone thought a s&eacute;ance was a good idea. Spoilers: It wasn't.</p>
-        <p class="stress-line">Safe to read aloud or share with players as-is &mdash; no spoilers.</p>
+<section id="section-cast">
+  <h2>The Cast</h2>
+  <p class="link-legend">Matching symbols connect a skill to the High Concept, Trouble, Aspect, or Stunt it's most tied to &mdash; when a player rolls that skill, it's a natural moment to also surface the matching trait. <span class="link-mark link-1" data-symbol="&#9679;">example</span> <span class="link-mark link-2" data-symbol="&#9650;">example</span> <span class="link-mark link-3" data-symbol="&#9632;">example</span></p>
+
+<div class="monster-tabs" role="tablist">
+  <button class="monster-tab-btn active" data-monster="tiffany">Tiffany</button>
+  <button class="monster-tab-btn" data-monster="corey">Corey</button>
+  <button class="monster-tab-btn" data-monster="kelly" data-roster="5,6,7">Kelly</button>
+  <button class="monster-tab-btn" data-monster="jennifer">Jennifer</button>
+  <button class="monster-tab-btn" data-monster="brandon" data-roster="5,6,7">Brandon</button>
+  <button class="monster-tab-btn" data-monster="joel" data-roster="4,6,7">Joel</button>
+  <button class="monster-tab-btn" data-monster="ashley" data-roster="7">Ashley</button>
+</div>
+
+<div class="monster-panel active" id="panel-tiffany">
+<div class="charcard">
+      <div class="card-head">
+        <img class="portrait" src="Media/tiffany.png" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Tiffany West <span class="role">&mdash; <span class="link-mark link-1" data-symbol="&#9679;">Theater Kid</span></span></h3>
+          <div class="player-name-row"><label>Player: <input type="text" class="player-name-input" data-char="Tiffany" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble"><span class="link-mark link-2" data-symbol="&#9650;">Inconvenienced Millionaire</span></li>
+            <li class="aspect"><span class="link-mark link-3" data-symbol="&#9632;">A good offense is a good defense</span></li>
+          </ul>
+        </div>
       </div>
-
-      <h3>Content Warnings</h3>
-      <p><strong>Central to the Story:</strong></p>
-      <ul>
-        <li>Vehicular manslaughter and its cover-up</li>
-        <li>Gambling addiction</li>
-        <li>Infidelity and blackmail</li>
-        <li>Body horror</li>
-        <li>General horror-genre content (involuntary visions, jump-scare beats)</li>
-      </ul>
-      <p><strong>Present, But in the Background:</strong></p>
-      <ul>
-        <li>Character death, including the death of a child</li>
-        <li>Murder</li>
-        <li>Slavery and the death of an enslaved person</li>
-        <li>Suicide (referenced, not depicted)</li>
-        <li>Parental abuse/coercion and a severely dysfunctional father-child relationship</li>
-        <li>Domestic violence</li>
-        <li>Alcohol at a teen gathering</li>
-      </ul>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/tiffany.png', 'Tiffany')">Show Photo</button>
+      <p><em>Investigate Self:</em> Wearing high-waisted jeans, a pearl necklace, and big funky earrings. A charm bracelet with beads that spell out "Tiffany."</p>
+      <p>Descendant of Francis West. Her family has fallen on hard times due to some unfortunate legal troubles, forcing them to move back to the now-dilapidated ancestral home. Tiffany is new to town, still making friends. Her father and uncle embezzled from the family company; her father gave the feds details on her uncle to keep himself out of prison.</p>
+      <h4>Stunt</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">Impenetrable Bluff:</span></strong> +2 to create advantages or defend with Deceive when using it to trick people into believing you're more capable or better positioned than you actually are.</p>
+      <h4>Skills</h4>
+      <div data-roster="4">
+        <table>
+          <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Deceive</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td>Empathy</td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Athletics</td><td><span class="link-mark link-3" data-symbol="&#9632;">Provoke</span></td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Stealth</td><td>Burglary</td><td><span class="link-mark link-2" data-symbol="&#9650;">Lore</span></td></tr>
+        </table>
+        <p class="stress-line">3 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+      </div>
+      <div data-roster="5">
+        <table>
+          <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Deceive</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td>Empathy</td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Athletics</td><td><span class="link-mark link-2" data-symbol="&#9650;">Lore</span></td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Stealth</td><td>Burglary</td><td><span class="link-mark link-3" data-symbol="&#9632;">Provoke</span></td></tr>
+        </table>
+        <p class="stress-line">3 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+      </div>
+      <div data-roster="6,7">
+        <table>
+          <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Deceive</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td>Empathy</td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Athletics</td><td><span class="link-mark link-2" data-symbol="&#9650;">Lore</span></td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td><span class="link-mark link-3" data-symbol="&#9632;">Fight</span></td><td>Burglary</td><td>Provoke</td></tr>
+        </table>
+        <p class="stress-line">3 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+      </div>
     </div>
-  </section>
-
-  <section id="section-overview">
-    <h2>Overview</h2>
-    <p><em>Game Aspects:</em></p>
-    <ul class="aspects">
-      <li class="aspect game-aspect-1">Mid-nineteen eighties</li>
-      <li class="aspect game-aspect-2">A world mostly like our own</li>
-      <li class="aspect game-aspect-3">Small Virginia town</li>
-    </ul>
-    <p>Each player in this one-to-two-session Fate Core adventure begins the game with no memories of who they are, where they are, or how they got there. Each of the 4&ndash;7 players starts with a totally blank character sheet, and will learn their own name, High Concept, Trouble, and skills as they explore the dilapidated old house they find themselves in. This game is appropriate for those unfamiliar with the Fate system, as long as the GM feels comfortable instructing as they go.</p>
-    <p>Brandon Ross talks his and his friends into an invitation to the old West Mansion, Shagbark Manse, from newly-to-town Tiffany West after hearing her parents aren't home. The resulting group of teenagers are looking for a little fun, a little bit of trouble on this Friday night in 1987. Instead of a harmless spooky séance in the notoriously haunted house,  they accidentally perform a ritual with real power, half séance and half something older, and wake up trapped inside Shagbark Manse with no memory of who they are or how they got there. The house is haunted by Elizabeth West &mdash; the White Lady &mdash; who died with a terrible secret and an unfinished need for revenge. As the night goes on, it's clear she's becoming more and more powerful. The players have until dawn to piece together their own identities, the house's history, and a way out, or it just might be the end of the world.</p>
-<p>This page covers the setting and logistics. Use the navigation bar above for the West family history, the night's events, and the four endings (Lore), full character sheets (Roster), monster stat blocks (Monsters), and the live session tools &mdash; clock, party progress, rooms explored, and the hints browser (Play Tracker).</p>
 
     
-  </section>
+</div>
 
-  <section>
-    <h2>Amnesia Logistics</h2>
-    <p>Every player starts with a completely blank character sheet &mdash; just their name. They don't know their own High Concept, Trouble, skills, or relationships going in. As the session progresses, hints and room discoveries hand back pieces of their own identity, and players fill in their sheet live, in front of the table, as they learn who they are.</p>
-    <p>Encourage players to explore the house around them, using skills they don't know if they have &mdash; when they roll a skill, tell them how good they are at it, and any related aspects or stunts. Each character will have some skills at +0, and unlike typical Fate games, it's helpful for players to note these skills.</p>
+<div class="monster-panel" id="panel-corey">
+<div class="charcard">
+      <div class="card-head">
+        <img class="portrait" src="Media/corey.jpg" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Corey Taylor <span class="role">&mdash; <span class="link-mark link-1" data-symbol="&#9679;">Know-it-all</span></span></h3>
+          <div class="player-name-row"><label>Player: <input type="text" class="player-name-input" data-char="Corey" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble" data-roster="5,6,7"><span class="link-mark link-2" data-symbol="&#9650;">Steals for fun and revenge</span></li>
+            <li class="aspect" data-roster="5,6,7"><span class="link-mark link-3" data-symbol="&#9632;">Survivor at any cost</span></li>
+            <li class="aspect trouble" data-roster="4">Hit and killed a pedestrian with their car</li>
+            <li class="aspect" data-roster="4"><span class="link-mark link-2" data-symbol="&#9650;">Gone Hunting</span></li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/corey.jpg', 'Corey')">Show Photo</button>
+      <p><em>Investigate Self:</em> Driver's License &mdash; Corey Taylor, 18 years old.</p>
+      <p data-roster="5,6,7">A driven, bookish type who reads about everything and never lets you forget it. In this roster his Trouble is petty theft. <span data-roster="5">In the 5-player game specifically, Corey is also one of Jennifer's two secret partners.</span></p>
+      <p data-roster="4">A driven, bookish type who reads about everything and never lets you forget it. With Kelly absent from this roster, Corey inherits her hit-and-run secret and her hunting background, and his build shifts to include some of her Shoot skill.</p>
+      <h4>Stunt</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">I've Read about That!</span></strong> Once per session, spend a Fate Point to use Lore in place of any other skill, if you can justify it with something you've read.</p>
+      <h4>Skills</h4>
+      <div data-roster="4">
+        <table>
+          <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Investigate</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Lore</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td><span class="link-mark link-2" data-symbol="&#9650;">Shoot</span></td><td>Crafts</td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Empathy</td><td>Stealth</td><td>Will</td></tr>
+        </table>
+        <p class="stress-line">2 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+      </div>
+      <div data-roster="5,6,7">
+        <table>
+          <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Investigate</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Lore</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Crafts</td><td><span class="link-mark link-3" data-symbol="&#9632;">Will</span></td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Empathy</td><td>Stealth</td><td><span class="link-mark link-2" data-symbol="&#9650;">Burglary</span></td></tr>
+        </table>
+        <p class="stress-line">2 boxes physical (Athletics) / 3 boxes mental (Will)</p>
+      </div>
+    </div>
 
-    <p>Ideally, players will quickly learn a few key facts about their characters. Encourage them to play their characters to what they know, even if that's limited. Find a way that works for your group to share things with the entire table, or with just a single player, though it's okay to ask them to roll to hide their discovery if it's a big one.</p>
-  </section>
-  <section>
-    <h2>FATE: Modified</h2>
-    <p>In many Fate games, the Notice and Investigate skills play important, distinct roles. To keep play in this one-shot streamlined and just a little bit simpler, I've combined Notice and Investigate into <strong>Investigate</strong>, and Athletics and Physique into <strong>Athletics</strong>. Use the combined skill whenever you would use either, including when determining stress boxes, though that's done for you.</p>
-    <p>Here's the full list of skills used in this game, and which actions each one can take:</p>
-    <table>
-      <tr><th>Skill</th><th>Overcome</th><th>Advantage</th><th>Attack</th><th>Defend</th></tr>
-      <tr><td>Crafts</td><td>x</td><td>x</td><td></td><td></td></tr>
-      <tr><td>Investigate</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Lore</td><td>x</td><td>x</td><td></td><td></td></tr>
-      <tr><td>Burglary</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Deceive</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Stealth</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Athletics</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Fight</td><td>x</td><td>x</td><td>x</td><td>x</td></tr>
-      <tr><td>Shoot</td><td>x</td><td>x</td><td>x</td><td></td></tr>
-      <tr><td>Empathy</td><td>x</td><td>x</td><td></td><td>x</td></tr>
-      <tr><td>Provoke</td><td>x</td><td>x</td><td>x</td><td></td></tr>
-      <tr><td>Will</td><td>x</td><td>x</td><td>x</td><td>x</td></tr>
-    </table>
-    <p>For more information, consult <a href="https://fate-srd.com/fate-core">FATE core</a>.</p>
-  </section>
+    
+</div>
 
-  <section>
-    <h2>Modality</h2>
-    <p>Ragnabark can be played around a physical table, or online.</p>
+<div class="monster-panel" id="panel-kelly">
+<div class="charcard" data-roster="5,6,7">
+      <div class="card-head">
+        <img class="portrait" src="Media/kelly.jpg" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Kelly Martin <span class="role">&mdash; <span class="link-mark link-1" data-symbol="&#9679;">Future Olympic Volleyball Player</span></span></h3>
+          <div class="player-name-row"><label>Player: <input type="text" class="player-name-input" data-char="Kelly" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble">Hit and killed a pedestrian with their car</li>
+            <li class="aspect"><span class="link-mark link-2" data-symbol="&#9650;">Gone Hunting</span></li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/kelly.jpg', 'Kelly')">Show Photo</button>
+      <p><em>Investigate Self:</em> High-waisted short-shorts with overlapping sides (dolphin shorts), and a jersey (#15) in coordinating colors &mdash; the back says "MARTIN." Fanny pack.</p>
+      <p>Kelly spent a lot of time hunting with her dad growing up, and has general proficiency at related tasks. Driving home from seeing Jennifer, Kelly hit and killed a pedestrian, fled the scene, and tampered with evidence &mdash; and she's one of Jennifer's two secret partners.</p>
+      <h4>Stunt</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">Sprinter/Highly Mobile:</span></strong> You move two zones for free in a conflict without rolling, instead of one, provided there are no situation aspects restricting movement.</p>
+      <h4>Skills</h4>
+      <table>
+        <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Athletics</span></td><td></td><td></td></tr>
+        <tr><th scope="row">Good (+3)</th><td>Will</td><td></td><td></td></tr>
+        <tr><th scope="row">Fair (+2)</th><td><span class="link-mark link-2" data-symbol="&#9650;">Shoot</span></td><td>Provoke</td><td></td></tr>
+        <tr><th scope="row">Average (+1)</th><td>Investigate</td><td>Crafts</td><td>Stealth</td></tr>
+      </table>
+      <p class="stress-line">4 boxes physical (Athletics) / 4 boxes mental (Will)</p>
+    </div>
+    
+<div class="charcard dimmed" data-roster="4">
+      <p class="redirect">Kelly isn't used in the 4-player game &mdash; her hit-and-run secret and hunting background transfer to Corey instead.</p>
+    </div>
 
-    <h3>At the Table, Before the Game</h3>
-    <ol>
-      <li>Print blank character sheets, with physical and mental stress calibrated for each character.</li>
-      <li>(optional) Print FATE cheat sheets.</li>
-      <li>Use the Print button on the Play Tracker page to print:
-        <ul>
-          <li>Physical artifacts characters can find in the manse</li>
-          <li>Character stunts</li>
-          <li>Hints that relate to individual memories or secrets</li>
-        </ul>
-      </li>
-    </ol>
+    
+</div>
 
-    <h3>Online, Before the Game</h3>
-    <ol>
-      <li>Prep digital character sheets to share.</li>
-      <li>Choose a meeting software.</li>
-      <li>Set up a group chat and private chats with each player.</li>
-    </ol>
-  </section>
+<div class="monster-panel" id="panel-jennifer">
+<div class="charcard">
+      <div class="card-head">
+        <img class="portrait" src="Media/jennifer.jpg" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Jennifer Lee <span class="role">&mdash; <span class="link-mark link-3" data-symbol="&#9670;">Aspiring Rockstar</span></span></h3>
+          <div class="player-name-row"><label>Player: <input type="text" class="player-name-input" data-char="Jennifer" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble" data-roster="6,7">Dating Joel and Kelly. Neither knows.</li>
+            <li class="aspect trouble" data-roster="5">Dating Corey and Kelly. Neither knows.</li>
+            <li class="aspect trouble" data-roster="4">Dating Joel and Corey. Neither knows.</li>
+            <li class="aspect"><span class="link-mark link-2" data-symbol="&#9650;">Weirdly calm about strange shit</span></li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/jennifer.jpg', 'Jennifer')">Show Photo</button>
+      <p><em>Investigate Self:</em> Dark colors. Driver's license and guitar picks in her purse: Jennifer Lee, age 17.</p>
+      <p>Weirdly calm about strange things, and the one who (unknowingly) triggers the real ritual instead of the fake séance. Jennifer is secretly dating two people at once, neither aware of the other &mdash; whenever Brandon is present alongside her, he also knows about this and blackmails her over it, even in the 5-player game, where he isn't one of the two partners himself.</p>
+      <h4>Stunt</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">Stunning Fist:</span></strong> Once per physical conflict, when you succeed on an unarmed attack, you may place the aspect Stunned on your opponent with one free invocation.</p>
+      <h4>Skills</h4>
+      <table>
+        <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Fight</span></td><td></td><td></td></tr>
+        <tr><th scope="row">Good (+3)</th><td>Empathy</td><td></td><td></td></tr>
+        <tr><th scope="row">Fair (+2)</th><td>Athletics</td><td><span class="link-mark link-2" data-symbol="&#9650;">Will</span></td><td></td></tr>
+        <tr><th scope="row">Average (+1)</th><td>Deceive</td><td><span class="link-mark link-3" data-symbol="&#9670;">Lore</span></td><td>Crafts</td></tr>
+      </table>
+      <p class="stress-line">3 boxes physical (Athletics) / 3 boxes mental (Will)</p>
+    </div>
+
+    
+</div>
+
+<div class="monster-panel" id="panel-brandon">
+<div class="charcard" data-roster="6,7">
+      <div class="card-head">
+        <img class="portrait" src="Media/brandon.jpg" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Brandon Ross <span class="role">&mdash; <span class="link-mark link-1" data-symbol="&#9679;">Mr. Popular</span></span></h3>
+          <div class="player-name-row"><label>Player: <input type="text" class="player-name-input" data-char="Brandon" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble">Casual Blackmailer</li>
+            <li class="aspect"><span class="link-mark link-2" data-symbol="&#9650;">Short Fuse</span></li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/brandon.jpg', 'Brandon')">Show Photo</button>
+      <p><em>Investigate Self:</em> A worn paperback of <em>The Prince</em> by Machiavelli.</p>
+      <p>Charming, manipulative, quick to sniff out an opening. Brandon is a casual blackmailer &mdash; his targets in this roster are Corey (theft), Kelly (hit-and-run), and Jennifer (dating two people).</p>
+      <h4>Stunt</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">Lie Whisperer:</span></strong> +2 to all Empathy rolls made to discern or discover lies, whether they're directed at you or someone else.</p>
+      <h4>Skills</h4>
+      <table>
+        <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Empathy</span></td><td></td><td></td></tr>
+        <tr><th scope="row">Good (+3)</th><td>Investigate</td><td></td><td></td></tr>
+        <tr><th scope="row">Fair (+2)</th><td>Will</td><td><span class="link-mark link-2" data-symbol="&#9650;">Provoke</span></td><td></td></tr>
+        <tr><th scope="row">Average (+1)</th><td>Fight</td><td>Shoot</td><td>Stealth</td></tr>
+      </table>
+      <p class="stress-line">2 boxes physical (Athletics) / 3 boxes mental (Will)</p>
+    </div>
+    
+<div class="charcard" data-roster="4">
+      <div class="card-head">
+        <img class="portrait" src="Media/brandon.jpg" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Brandon Ross <span class="role">&mdash; Mr. Popular (NPC)</span></h3>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/brandon.jpg', 'Brandon')">Show Photo</button>
+      <p>Charming, manipulative, quick to sniff out an opening. In this roster he's an NPC who dies partway through the night rather than a played character &mdash; but he's still a casual blackmailer while he's around, holding leverage on Corey (now holding the hit-and-run instead), Joel (boxing ring), and Jennifer.</p>
+    </div>
+    
+<div class="charcard" data-roster="5">
+      <div class="card-head">
+        <img class="portrait" src="Media/brandon.jpg" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Brandon Ross <span class="role">&mdash; <span class="link-mark link-2" data-symbol="&#9650;">Star Quarterback</span></span></h3>
+          <div class="player-name-row"><label>Player: <input type="text" class="player-name-input" data-char="Brandon" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble">Blackmailer &mdash; Corey, Kelly, and Jennifer</li>
+            <li class="aspect"><span class="link-mark link-3" data-symbol="&#9632;">Deep in gambling debt</span></li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/brandon.jpg', 'Brandon')">Show Photo</button>
+      <p><em>Investigate Self:</em> A varsity letterman jacket with ROSS stitched on the back. A crumpled, torn-in-half betting slip in the inside pocket.</p>
+      <p>In this roster, Brandon combines his usual social manipulation with Joel's athleticism and gambling trouble. No underground boxing ring in this version &mdash; gambling debt alone is the background Aspect, so it doesn't stack with the Blackmailer Trouble.</p>
+      <h4>Stunt</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">Lie Whisperer:</span></strong> +2 to all Empathy rolls made to discern or discover lies, whether they're directed at you or someone else.</p>
+      <h4>Skills</h4>
+      <table>
+        <tr><th scope="row">Great (+4)</th><td>Burglary</td><td></td><td></td></tr>
+        <tr><th scope="row">Good (+3)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Empathy</span></td><td></td><td></td></tr>
+        <tr><th scope="row">Fair (+2)</th><td><span class="link-mark link-2" data-symbol="&#9650;">Athletics</span></td><td><span class="link-mark link-3" data-symbol="&#9632;">Fight</span></td><td></td></tr>
+        <tr><th scope="row">Average (+1)</th><td>Investigate</td><td>Provoke</td><td>Stealth</td></tr>
+      </table>
+      <p class="stress-line">3 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+    </div>
+
+    
+</div>
+
+<div class="monster-panel" id="panel-joel">
+<div class="charcard" data-roster="4,6,7">
+      <div class="card-head">
+        <img class="portrait" src="Media/joel.png" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Joel Lopez <span class="role">&mdash; <span class="link-mark link-2" data-symbol="&#9650;">Football Star</span></span></h3>
+          <div class="player-name-row"><label>Player: <input type="text" class="player-name-input" data-char="Joel" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble"><span class="link-mark link-1" data-symbol="&#9679;">Joined an illegal underground boxing ring to pay off gambling debts</span></li>
+            <li class="aspect"><span class="link-mark link-3" data-symbol="&#9632;">Irritatingly Sunny</span></li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/joel.png', 'Joel')">Show Photo</button>
+      <p><em>Investigate Self:</em> Colorblock track suit. "Joel" written in the waistband of his underwear. A photo of Jennifer in his wallet.</p>
+      <p>Irritatingly sunny surface, serious trouble underneath: Joel has joined an illegal underground boxing ring to pay off gambling debts.</p>
+      <h4>Stunt</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">Dazing Counter:</span></strong> When you succeed with style on a defend action against an opponent's Fight roll, you automatically counter with a nerve punch or stunning blow, attaching the Dazed situation aspect to your opponent with a free invoke.</p>
+      <h4>Skills</h4>
+      <div data-roster="4">
+        <table>
+          <tr><th scope="row">Great (+4)</th><td>Burglary</td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td><span class="link-mark link-2" data-symbol="&#9650;">Athletics</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td><span class="link-mark link-3" data-symbol="&#9632;">Provoke</span></td><td>Stealth</td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Investigate</td><td><span class="link-mark link-1" data-symbol="&#9679;">Fight</span></td><td>Crafts</td></tr>
+        </table>
+        <p class="stress-line">4 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+      </div>
+      <div data-roster="6,7">
+        <table>
+          <tr><th scope="row">Great (+4)</th><td>Burglary</td><td></td><td></td></tr>
+          <tr><th scope="row">Good (+3)</th><td><span class="link-mark link-2" data-symbol="&#9650;">Athletics</span></td><td></td><td></td></tr>
+          <tr><th scope="row">Fair (+2)</th><td>Stealth</td><td><span class="link-mark link-1" data-symbol="&#9679;">Fight</span></td><td></td></tr>
+          <tr><th scope="row">Average (+1)</th><td>Investigate</td><td><span class="link-mark link-3" data-symbol="&#9632;">Provoke</span></td><td>Shoot</td></tr>
+        </table>
+        <p class="stress-line">4 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+      </div>
+    </div>
+    
+<div class="charcard dimmed" data-roster="5">
+      <p class="redirect">Joel doesn't exist separately in the 5-player game &mdash; see Brandon, above.</p>
+    </div>
+
+    
+</div>
+
+<div class="monster-panel" id="panel-ashley">
+<div class="charcard">
+      <div class="card-head">
+        <img class="portrait" src="Media/ashley.png" alt="" onerror="this.style.display='none'">
+        <div>
+          <h3>Ashley West <span class="role">&mdash; <span class="link-mark link-1" data-symbol="&#9679;">Budding Zoologist</span></span></h3>
+          <div class="player-name-row" data-roster="7"><label>Player: <input type="text" class="player-name-input" data-char="Ashley" placeholder="type name"></label></div>
+          <ul class="aspects">
+            <li class="aspect trouble">Plagued by Visions &amp; Voices</li>
+            <li class="aspect"><span class="link-mark link-2" data-symbol="&#9650;">Frustrating Little Sister</span></li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="player-view-btn photo-btn" onclick="showCharacterPhoto('Media/ashley.png', 'Ashley')">Show Photo</button>
+      <p>Plagued by visions and voices even before tonight, and a frustrating little sister to Tiffany the rest of the time. As a full PC in this roster, she's the one most attuned to the house's supernatural layer from the start.</p>
+      <p><em>Investigate Self:</em> A field vest with a dozen pockets, worn sneakers, a smear of dirt on one knee. A well-thumbed field guide to local birds and mammals, her name written inside the cover in careful handwriting: Ashley West.</p>
+
+<h4>Stunts</h4>
+      <p><strong><span class="link-mark link-1" data-symbol="&#9679;">Animal Affinity:</span></strong> Player picks one animal type (cats, rodents, horses, etc) at character creation, fixed for the whole game. At the start of any scene where that animal could reasonably appear, make a Lore check at Good (+3); on a success, one is present.</p>
+      <p><strong><span class="link-mark link-2" data-symbol="&#9650;">Berserk Rage:</span></strong> When you suffer a physical consequence, you can invoke it for free on your next attack. Multiple consequences = multiple free invokes.</p>
+      <h4>Skills</h4>
+      <table>
+        <tr><th scope="row">Great (+4)</th><td><span class="link-mark link-1" data-symbol="&#9679;">Lore</span></td><td></td><td></td></tr>
+        <tr><th scope="row">Good (+3)</th><td>Investigate</td><td></td><td></td></tr>
+        <tr><th scope="row">Fair (+2)</th><td>Stealth</td><td>Athletics</td><td></td></tr>
+        <tr><th scope="row">Average (+1)</th><td>Crafts</td><td>Empathy</td><td><span class="link-mark link-2" data-symbol="&#9650;">Provoke</span></td></tr>
+      </table>
+      <p class="stress-line">3 boxes physical (Athletics) / 2 boxes mental (Will)</p>
+    </div>
+
+    
+</div>
+
+
+
+</section>
+
+<section>
+  <h2>How These Differ By Roster</h2>
+  <details>
+    <summary>Show / hide roster differences</summary>
+    <div class="callout">
+      <p><strong>Tiffany:</strong> 4p's Fair skills are Athletics and Provoke; 5p and 6p/7p both have Athletics and Lore at Fair instead. Average includes Stealth in 4p/5p, Fight in 6p/7p.</p>
+      <p><strong>Corey:</strong> Trouble is theft in 5p/6p/7p, with Crafts and Will at Fair. In 4p (Kelly unused), he inherits her hit-and-run instead, with Shoot and Crafts at Fair.</p>
+      <p><strong>Kelly:</strong> not used in 4p &mdash; her secret and Gone Hunting aspect move to Corey there.</p>
+      <p><strong>Jennifer:</strong> build is identical in every roster; only which two people she's secretly dating changes.</p>
+      <p><strong>Brandon:</strong> a PC in 5p/6p/7p. In 4p he's an NPC who dies during the ritual, with an expanded blackmail list. In 5p, he's a merged variant combining his own social manipulation with Joel's athleticism and gambling trouble &mdash; no boxing ring in this version, so gambling debt alone is the Aspect, avoiding stacking two Troubles on one character.</p>
+      <p><strong>Joel:</strong> a PC in 4p/6p/7p. In 4p his Fair skills are Provoke and Stealth; in 6p/7p his Fair skills are Stealth and Fight instead, with Provoke and Shoot at Average. In 5p he doesn't exist separately &mdash; his traits transfer to Brandon instead.</p>
+      <p><strong>Ashley:</strong> a full PC only in 7p; an NPC (Tiffany's sister) in every other roster.</p>
+    </div>
+  </details>
+</section>
 
 </main>
 <script>
@@ -1323,6 +1557,17 @@
       const rosters = el.dataset.roster.split(',').map(s => s.trim());
       el.classList.toggle('hide', !rosters.includes(String(n)));
     });
+    // If the currently active character tab just got hidden by this roster change, switch to the first visible tab.
+    const activeTab = document.querySelector('.monster-tab-btn.active');
+    if (activeTab && activeTab.classList.contains('hide')) {
+      const firstVisible = Array.from(document.querySelectorAll('.monster-tab-btn')).find(b => !b.classList.contains('hide'));
+      if (firstVisible) {
+        document.querySelectorAll('.monster-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.monster-panel').forEach(p => p.classList.remove('active'));
+        firstVisible.classList.add('active');
+        document.getElementById('panel-' + firstVisible.dataset.monster).classList.add('active');
+      }
+    }
     try { localStorage.setItem('shagbark-roster', n); } catch(e){}
     if (typeof onRosterChange === 'function') onRosterChange();
   }
@@ -1337,27 +1582,62 @@
 </script>
 
 <script>
-  function toggleIntroCW(){
-    const content = document.getElementById('intro-cw-content');
-    const btn = document.getElementById('intro-cw-toggle');
-    const collapsed = content.classList.toggle('collapsed');
-    btn.textContent = collapsed ? 'Expand' : 'Collapse';
-    try { localStorage.setItem('shagbark-intro-cw-collapsed', collapsed ? '1' : '0'); } catch(e){}
+  // ---- Character tabs ----
+  document.querySelectorAll('.monster-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.monster-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.monster-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.monster).classList.add('active');
+    });
+  });
+
+  // ---- Player photo modal ----
+  function showCharacterPhoto(src, name){
+    const content = document.getElementById('player-view-content');
+    content.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = name || '';
+    img.className = 'player-view-img';
+    img.onerror = function(){ this.replaceWith(document.createTextNode('[image not found: ' + src + ']')); };
+    content.appendChild(img);
+    document.getElementById('player-view-overlay').classList.add('open');
   }
-  (function initIntroCW(){
-    let collapsed = false; // open by default
-    try {
-      const saved = localStorage.getItem('shagbark-intro-cw-collapsed');
-      if (saved !== null) collapsed = saved === '1';
-    } catch(e){}
-    if (collapsed) {
-      document.getElementById('intro-cw-content').classList.add('collapsed');
-      document.getElementById('intro-cw-toggle').textContent = 'Expand';
-    }
-  })();
+  function closePlayerView(){
+    document.getElementById('player-view-overlay').classList.remove('open');
+  }
+
+  // ---- Player names ----
+  function savePlayerNames(){
+    const names = {};
+    document.querySelectorAll('.player-name-input').forEach(inp => {
+      if (inp.value.trim()) names[inp.dataset.char] = inp.value.trim();
+    });
+    try { localStorage.setItem('shagbark-player-names', JSON.stringify(names)); } catch(e){}
+  }
+  function loadPlayerNames(){
+    let names = {};
+    try { names = JSON.parse(localStorage.getItem('shagbark-player-names') || '{}'); } catch(e){}
+    document.querySelectorAll('.player-name-input').forEach(inp => {
+      if (names[inp.dataset.char]) inp.value = names[inp.dataset.char];
+    });
+  }
+  document.querySelectorAll('.player-name-input').forEach(inp => {
+    inp.addEventListener('input', savePlayerNames);
+  });
+  loadPlayerNames();
 
   setRoster(initialRoster);
 </script>
+
+<div id="player-view-overlay" class="player-view-overlay" onclick="if(event.target===this) closePlayerView()">
+  <div class="player-view-box">
+    <button class="player-view-close" onclick="closePlayerView()">&times;</button>
+    <div class="player-view-content" id="player-view-content"></div>
+  </div>
+</div>
+
 <style>
   footer.site-footer{
     max-width:700px;
