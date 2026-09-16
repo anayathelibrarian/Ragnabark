@@ -1192,7 +1192,7 @@
 </nav>
 
 <main>
-<section>
+<section id="section-west-family">
     <h2>The West Family</h2>
 
     <h3>Francis West I <span class="role">&mdash; Easy to Hate, the Real Antagonist</span></h3>
@@ -1232,7 +1232,7 @@
     </details>
   </section>
 
-  <section>
+  <section id="section-manse-grounds">
     <h2>The Manse and Grounds</h2>
     <h3>Shagbark Manse</h3>
     <img src="Media/shagbarkmanse.jpg" alt="" onerror="this.style.display='none'">
@@ -1296,7 +1296,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="section-the-night">
     <h2>The Night</h2>
 
     <h3>Before the House</h3>
@@ -1310,7 +1310,7 @@
     <p>The players wake with no memory of who they are. The house is locked in on itself &mdash; no phone signal, no way out that anyone can find right away. As they explore, they'll piece together the house's history, their own identities, and each other's secrets (see the workbook's Knowledge and Hints tabs for the full, room-by-room breakdown).</p>
   </section>
 
-  <section>
+  <section id="section-four-endings">
     <h2>The Four Endings</h2>
     <p>The White Lady will not return to her eternal slumber until one of these is achieved. The mist barrier will weaken in the sunlight of the new day, but if the players don't take care of the White Lady problem, the dawn will release the risen West dead on their town. The White Lady can be spoken to directly (Empathy, Deceive, or Provoke, difficulty and requirements noted per hint in the workbook) and will explain her need for vengeance if asked.</p>
     <ul>
@@ -1348,5 +1348,27 @@
 <footer class="site-footer">
   <p>Ragnabark was created by Anaya, with assistance from generous play testers. This presentation was assisted by Claude. Play it without her? <a href="mailto:jones.anaya@gmail.com?subject=ragnabark">Let Anaya know how it went</a>. Want to see more of Anaya's shenanigans? Visit <a href="https://anayathelibrarian.github.io/">her page</a>.</p>
 </footer>
+<nav class="quickjump" id="quickjump">
+  <div class="quickjump-links" id="quickjump-links">
+    <a href="#section-west-family">The West Family</a>
+    <a href="#section-manse-grounds">The Manse and Grounds</a>
+    <a href="#section-the-night">The Night</a>
+    <a href="#section-four-endings">The Four Endings</a>
+  </div>
+  <button type="button" class="quickjump-toggle" onclick="toggleQuickjump()">Jump to&hellip;</button>
+</nav>
+
+<script>
+  function toggleQuickjump(){
+    document.getElementById('quickjump-links').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e){
+    const qj = document.getElementById('quickjump');
+    if (qj && !qj.contains(e.target)) {
+      const links = document.getElementById('quickjump-links');
+      if (links) links.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>

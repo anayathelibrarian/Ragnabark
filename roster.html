@@ -697,7 +697,7 @@
   }
   .hint-card .hint-meta span{margin-right:14px;}
   .hint-card .hint-text{font-size:1.05rem;}
-  .hint-card .player-view-btn{
+  .player-view-btn{
     display:inline-block;
     margin-top:8px;
     padding:5px 14px;
@@ -710,7 +710,7 @@
     font-size:0.85rem;
     cursor:pointer;
   }
-  .hint-card .player-view-btn:hover{background:rgba(185,144,63,0.22);}
+  .player-view-btn:hover{background:rgba(185,144,63,0.22);}
   .progress-tag{
     display:inline-block;
     font-size:0.78rem;
@@ -1529,7 +1529,7 @@
 
 </section>
 
-<section>
+<section id="section-roster-diffs">
   <h2>How These Differ By Roster</h2>
   <details>
     <summary>Show / hide roster differences</summary>
@@ -1661,5 +1661,25 @@
 <footer class="site-footer">
   <p>Ragnabark was created by Anaya, with assistance from generous play testers. This presentation was assisted by Claude. Play it without her? <a href="mailto:jones.anaya@gmail.com?subject=ragnabark">Let Anaya know how it went</a>. Want to see more of Anaya's shenanigans? Visit <a href="https://anayathelibrarian.github.io/">her page</a>.</p>
 </footer>
+<nav class="quickjump" id="quickjump">
+  <div class="quickjump-links" id="quickjump-links">
+    <a href="#section-cast">The Cast</a>
+    <a href="#section-roster-diffs">How These Differ By Roster</a>
+  </div>
+  <button type="button" class="quickjump-toggle" onclick="toggleQuickjump()">Jump to&hellip;</button>
+</nav>
+
+<script>
+  function toggleQuickjump(){
+    document.getElementById('quickjump-links').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e){
+    const qj = document.getElementById('quickjump');
+    if (qj && !qj.contains(e.target)) {
+      const links = document.getElementById('quickjump-links');
+      if (links) links.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>

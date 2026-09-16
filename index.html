@@ -1258,14 +1258,14 @@
     
   </section>
 
-  <section>
+  <section id="section-logistics">
     <h2>Amnesia Logistics</h2>
     <p>Every player starts with a completely blank character sheet &mdash; just their name. They don't know their own High Concept, Trouble, skills, or relationships going in. As the session progresses, hints and room discoveries hand back pieces of their own identity, and players fill in their sheet live, in front of the table, as they learn who they are.</p>
     <p>Encourage players to explore the house around them, using skills they don't know if they have &mdash; when they roll a skill, tell them how good they are at it, and any related aspects or stunts. Each character will have some skills at +0, and unlike typical Fate games, it's helpful for players to note these skills.</p>
 
     <p>Ideally, players will quickly learn a few key facts about their characters. Encourage them to play their characters to what they know, even if that's limited. Find a way that works for your group to share things with the entire table, or with just a single player, though it's okay to ask them to roll to hide their discovery if it's a big one.</p>
   </section>
-  <section>
+  <section id="section-fate-modified">
     <h2>FATE: Modified</h2>
     <p>In many Fate games, the Notice and Investigate skills play important, distinct roles. To keep play in this one-shot streamlined and just a little bit simpler, I've combined Notice and Investigate into <strong>Investigate</strong>, and Athletics and Physique into <strong>Athletics</strong>. Use the combined skill whenever you would use either, including when determining stress boxes, though that's done for you.</p>
     <p>Here's the full list of skills used in this game, and which actions each one can take:</p>
@@ -1287,7 +1287,7 @@
     <p>For more information, consult <a href="https://fate-srd.com/fate-core">FATE core</a>.</p>
   </section>
 
-  <section>
+  <section id="section-modality">
     <h2>Modality</h2>
     <p>Ragnabark can be played around a physical table, or online.</p>
 
@@ -1382,5 +1382,28 @@
 <footer class="site-footer">
   <p>Ragnabark was created by Anaya, with assistance from generous play testers. This presentation was assisted by Claude. Play it without her? <a href="mailto:jones.anaya@gmail.com?subject=ragnabark">Let Anaya know how it went</a>. Want to see more of Anaya's shenanigans? Visit <a href="https://anayathelibrarian.github.io/">her page</a>.</p>
 </footer>
+<nav class="quickjump" id="quickjump">
+  <div class="quickjump-links" id="quickjump-links">
+    <a href="#section-intro-cw">Player Intro & Content Warnings</a>
+    <a href="#section-overview">Overview</a>
+    <a href="#section-logistics">Amnesia Logistics</a>
+    <a href="#section-fate-modified">FATE: Modified</a>
+    <a href="#section-modality">Modality</a>
+  </div>
+  <button type="button" class="quickjump-toggle" onclick="toggleQuickjump()">Jump to&hellip;</button>
+</nav>
+
+<script>
+  function toggleQuickjump(){
+    document.getElementById('quickjump-links').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e){
+    const qj = document.getElementById('quickjump');
+    if (qj && !qj.contains(e.target)) {
+      const links = document.getElementById('quickjump-links');
+      if (links) links.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>
